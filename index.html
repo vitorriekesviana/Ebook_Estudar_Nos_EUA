@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAT Math Mastery | Engenharia da Nota Perfeita</title>
+    <title>SAT Math Tutoring | Engenharia da Nota</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-dark: #0f172a; /* Navy Blue muito escuro */
+            --bg-dark: #0f172a; 
             --bg-card: #1e293b;
-            --primary: #fbbf24; /* Amarelo/Dourado Acadêmico */
+            --primary: #fbbf24; /* Dourado */
+            --accent-blue: #38bdf8; /* Azul claro para destaque matemático */
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
-            --usf-green: #006747; /* Tom sutil da USF */
+            --usf-green: #006747; 
         }
 
         body {
@@ -25,10 +25,9 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Efeito de Papel Milimetrado (Math Vibe) no fundo */
+        /* Grid Background sutil */
         body::before {
             content: "";
             position: fixed;
@@ -54,7 +53,6 @@
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
             font-family: 'Space Mono', monospace;
             font-weight: 700;
@@ -62,21 +60,19 @@
             color: var(--primary);
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 60px 0 100px 0;
-            gap: 40px;
+            padding: 60px 0 80px 0;
+            gap: 50px;
         }
 
-        .hero-text {
-            flex: 1;
-        }
+        .hero-text { flex: 1; }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             line-height: 1.1;
             margin-bottom: 20px;
             background: -webkit-linear-gradient(0deg, #fff, #94a3b8);
@@ -85,19 +81,13 @@
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-gray);
             margin-bottom: 30px;
-            max-width: 500px;
         }
 
-        .highlight {
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* Área da Foto */
-        .hero-img-container {
+        /* Moldura da Foto */
+        .hero-img-wrapper {
             flex: 1;
             position: relative;
             display: flex;
@@ -105,221 +95,182 @@
         }
 
         .hero-img {
-            width: 350px;
-            height: 450px;
+            width: 320px;
+            height: 400px;
             object-fit: cover;
-            border-radius: 20px;
-            border: 2px solid var(--primary);
-            z-index: 2;
-            box-shadow: 20px 20px 0px rgba(251, 191, 36, 0.1);
+            border-radius: 12px;
+            border: 1px solid var(--primary);
+            box-shadow: 15px 15px 0px rgba(251, 191, 36, 0.1);
         }
-
-        /* Elementos Flutuantes Matemáticos (Decorativos) */
-        .math-symbol {
-            position: absolute;
-            color: var(--primary);
-            font-family: 'Space Mono', monospace;
-            opacity: 0.6;
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float { 0% {transform: translateY(0px);} 50% {transform: translateY(-20px);} 100% {transform: translateY(0px);} }
 
         /* Botões */
         .btn {
             display: inline-block;
             background: var(--primary);
             color: var(--bg-dark);
-            padding: 15px 35px;
+            padding: 12px 30px;
             font-weight: 700;
             text-decoration: none;
-            border-radius: 8px;
-            transition: transform 0.2s;
-            font-size: 1.1rem;
+            border-radius: 6px;
+            transition: 0.3s;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2); }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--text-gray);
-            color: var(--text-light);
-            margin-left: 10px;
-        }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-
-        /* STATS BAR */
-        .stats-bar {
+        /* SEÇÃO DE EXEMPLO (NOVIDADE) */
+        .problem-section {
             background: var(--bg-card);
-            padding: 30px;
-            border-radius: 15px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: -50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .stat-item { text-align: center; margin: 10px; }
-        .stat-num { display: block; font-size: 2.5rem; font-weight: 800; color: var(--primary); font-family: 'Space Mono', monospace; }
-        .stat-desc { color: var(--text-gray); font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* SECTIONS */
-        section { padding: 80px 0; }
+        .problem-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .problem-text { flex: 1; }
         
-        h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; }
-        
-        /* CARDS */
+        /* A Imagem SVG Gerada */
+        .blackboard-svg {
+            flex: 1;
+            width: 100%;
+            max-width: 500px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+            transition: transform 0.3s;
+        }
+        .blackboard-svg:hover { transform: scale(1.02); }
+
+        /* Cards Metodologia */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
-
         .card {
-            background: rgba(30, 41, 59, 0.5);
-            padding: 30px;
-            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.4);
+            padding: 25px;
+            border-radius: 10px;
             border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
-        .card h3 { margin-top: 0; }
+        .card h3 { color: var(--primary); margin-top: 0; }
 
-        /* Sobre Mim (Engenharia) */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .degree-badge {
-            background: var(--usf-green);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        /* WhatsApp */
+        /* WhatsApp Float */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            background: #25d366;
-            width: 60px; height: 60px;
-            border-radius: 50%;
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 30px; color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            text-decoration: none;
-            z-index: 100;
-            transition: 0.3s;
+            font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none; z-index: 100; transition: 0.3s;
         }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* Mobile */
         @media (max-width: 768px) {
-            .hero { flex-direction: column-reverse; text-align: center; padding-top: 20px; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero-img { width: 100%; max-width: 300px; height: auto; }
-            .about-grid { grid-template-columns: 1fr; }
-            .btn { width: 100%; box-sizing: border-box; margin: 5px 0; }
-            .btn-outline { margin-left: 0; }
+            .hero, .problem-container { flex-direction: column; text-align: center; }
+            .hero-img { width: 100%; max-width: 300px; }
+            .blackboard-svg { width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <nav class="container">
-        <div class="logo">SAT_MATH.LOG()</div>
-        <a href="#contact" style="color: white; text-decoration: none; font-size: 0.9rem;">Contato</a>
+        <div class="logo"> &lt;SAT_MATH /&gt; </div>
     </nav>
 
     <header class="container hero">
         <div class="hero-text">
-            <div class="degree-badge"><i class="fas fa-university"></i> USF ENGINEERING GRADUATE</div>
-            <h1>A Engenharia por trás da <span class="highlight">Nota 800</span>.</h1>
-            <p>Não estude matemática como um aluno de ensino médio. Aprenda a hackear o SAT com a mentalidade de um Engenheiro formado nos EUA.</p>
-            
-            <a href="https://wa.me/5541999999999" class="btn">Quero o Diagnóstico</a>
-            <a href="#method" class="btn btn-outline">Ver Metodologia</a>
+            <div style="color: var(--primary); font-weight: bold; margin-bottom: 10px; font-family: 'Space Mono', monospace;">
+                // USF BIOMEDICAL ENGINEERING
+            </div>
+            <h1>Matemática SAT: <br>Raciocínio de Engenheiro.</h1>
+            <p>Eu sou um Engenheiro Biomédico formado nos EUA com GPA 3.7. Eu não ensino "truques"; ensino a lógica analítica necessária para superar os 750 pontos.</p>
+            <a href="https://wa.me/5541999999999" class="btn">Agendar Aula</a>
         </div>
         
-        <div class="hero-img-container">
-            <div class="math-symbol" style="top: -20px; left: 0;">∫</div>
-            <div class="math-symbol" style="bottom: 20px; right: -20px; font-size: 2rem;">∑</div>
-            <div class="math-symbol" style="top: 50%; left: -40px; font-size: 1.5rem;">π</div>
-
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Professor de SAT" class="hero-img">
+        <div class="hero-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Sua Foto" class="hero-img">
         </div>
     </header>
 
-    <div class="container">
-        <div class="stats-bar">
-            <div class="stat-item">
-                <span class="stat-num">3.7</span>
-                <span class="stat-desc">GPA Engenharia (USF)</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-num">750+</span>
-                <span class="stat-desc">Target Score</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-num">20+</span>
-                <span class="stat-desc">Alunos Mentorados</span>
-            </div>
-        </div>
-    </div>
-
-    <section id="method" class="container">
-        <h2>Por que minha estratégia funciona?</h2>
-        <div class="grid-3">
-            <div class="card">
-                <i class="fas fa-calculator"></i>
-                <h3>Hacking the Calculator</h3>
-                <p>O SAT digital permite a calculadora o tempo todo (Desmos). Eu te ensino a resolver questões "impossíveis" em segundos usando apenas gráficos.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-brain"></i>
-                <h3>Reconhecimento de Padrão</h3>
-                <p>O SAT recicla conceitos. Eu treinei uma rede neural mental para identificar o "tipo" da questão antes mesmo de terminar de ler o enunciado.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-passport"></i>
-                <h3>Insider Info</h3>
-                <p>Morei na Flórida e passei pelo processo que você quer passar. Minhas aulas incluem dicas reais sobre a vida e o estudo nos EUA.</p>
-            </div>
-        </div>
-    </section>
-
-    <section style="background-color: var(--bg-card);">
-        <div class="container about-grid">
-            <div>
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Universidade" style="width: 100%; border-radius: 12px; opacity: 0.8;">
-            </div>
-            <div>
-                <h2>O Engenheiro por trás do Método</h2>
-                <p>Meu nome é [SEU NOME]. Sou Engenheiro Biomédico formado pela <strong>University of South Florida (USF)</strong>. </p>
-                <p>Matemática, Álgebra e Estatística não foram apenas matérias que eu "passei". Foram ferramentas que usei diariamente para manter um GPA de 3.7 em um curso de engenharia nos EUA.</p>
-                <p>Meu objetivo não é apenas te ensinar a fórmula de Bhaskara (isso você já sabe). É te ensinar a <strong>pensar rápido</strong>, gerenciar o tempo e destruir a seção de matemática.</p>
+    <section class="problem-section">
+        <div class="container problem-container">
+            
+            <svg class="blackboard-svg" viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="500" height="350" rx="15" fill="#1e293b" stroke="#334155" stroke-width="4"/>
                 
-                <ul style="list-style: none; padding: 0; margin-top: 20px;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Formado nos EUA (Vivência Real)</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Especialista em SAT Math Digital</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Bilingue (Português/Inglês)</li>
+                <text x="30" y="45" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="14">EXAMPLO: SYSTEM OF EQUATIONS</text>
+                <line x1="30" y1="55" x2="470" y2="55" stroke="#334155" stroke-width="2"/>
+
+                <text x="40" y="90" fill="#f8fafc" font-family="'Kalam', cursive" font-size="22">1) 3x + 2y = 16</text>
+                <text x="40" y="125" fill="#f8fafc" font-family="'Kalam', cursive" font-size="22">2) y = x + 3</text>
+
+                <path d="M 150 125 Q 200 125 220 100" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+                
+                <text x="240" y="90" fill="#fbbf24" font-family="'Space Mono', monospace" font-size="14" font-weight="bold">STEP 1: SUBSTITUTION</text>
+                <text x="240" y="120" fill="#38bdf8" font-family="'Kalam', cursive" font-size="20">3x + 2(<tspan fill="#fbbf24">x + 3</tspan>) = 16</text>
+
+                <text x="240" y="155" fill="#38bdf8" font-family="'Kalam', cursive" font-size="20">3x + 2x + 6 = 16</text>
+                <text x="240" y="185" fill="#38bdf8" font-family="'Kalam', cursive" font-size="20">5x = 10</text>
+                
+                <rect x="235" y="200" width="100" height="40" rx="5" fill="rgba(56, 189, 248, 0.2)" stroke="#38bdf8"/>
+                <text x="260" y="228" fill="#fff" font-family="'Kalam', cursive" font-size="24" font-weight="bold">x = 2</text>
+
+                <text x="40" y="300" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12">
+                    // A maioria erra sinal aqui.
+                </text>
+                <text x="40" y="315" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12">
+                    // Foco na organização = Velocidade.
+                </text>
+
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#fbbf24" />
+                    </marker>
+                </defs>
+            </svg>
+
+            <div class="problem-text">
+                <h2>Como eu ensino</h2>
+                <p>O segredo do SAT não é decorar fórmulas complexas, mas dominar o básico com velocidade absurda.</p>
+                <p>Nesta visualização, mostro como transformo um sistema de equações — que muitos demoram 3 minutos para resolver — em um processo linear de 40 segundos.</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color:var(--primary)"></i> <strong>Organização Visual:</strong> Engenheiros não cometem erros bobos por desorganização.</li>
+                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color:var(--primary)"></i> <strong>Álgebra Pura:</strong> Fundamentos sólidos para quando a calculadora não ajuda.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="text-align: center; padding: 100px 0;">
-        <div class="container">
-            <h2 style="font-size: 3rem;">Vamos garantir seu 750+?</h2>
-            <p style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px;">Vagas limitadas para mentoria individual.</p>
-            <a href="https://wa.me/5541999999999" class="btn" style="font-size: 1.5rem;">Agendar Primeira Sessão</a>
+    <section class="container">
+        <h2 style="text-align: center; margin-bottom: 40px;">Diferenciais do Engenheiro</h2>
+        <div class="grid-3">
+            <div class="card">
+                <i class="fas fa-university fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Graduação USF</h3>
+                <p>Formado em Engenharia Biomédica na Flórida. Sei exatamente o nível de inglês e matemática exigido lá fora.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-search fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Análise de Padrões</h3>
+                <p>Acumulei experiência com +20 alunos identificando os padrões repetitivos da prova. Nada é surpresa.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-line fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Estatística Aplicada</h3>
+                <p>Domínio total de Data Analysis e Statistics, tópicos cada vez mais cobrados no novo SAT Digital.</p>
+            </div>
         </div>
+    </section>
+
+    <section style="text-align: center; padding: 80px 0;">
+        <h2 style="font-size: 2.5rem;">Target: 750+ Math</h2>
+        <p style="color: var(--text-gray);">Mentoria individual para quem leva o futuro a sério.</p>
+        <br>
+        <a href="https://wa.me/5541999999999" class="btn">Solicitar Diagnóstico</a>
     </section>
 
     <a href="https://wa.me/5541999999999" class="whatsapp-float" target="_blank">
