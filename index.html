@@ -69,17 +69,21 @@
         .hero-text { flex: 1; }
         
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem); /* Aumentei um pouco */
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
             line-height: 1.1; margin-bottom: 20px;
             color: var(--text-light);
         }
-        
-        .hero h1 span {
-            color: var(--primary);
-        }
+        .hero h1 span { color: var(--primary); }
 
         .hero p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; }
         
+        .hero-cta-group {
+            display: flex;
+            flex-direction: column; /* Alinha botão e texto verticalmente */
+            align-items: flex-start; /* Garante alinhamento à esquerda */
+            gap: 10px;
+        }
+
         .hero-img-wrapper { flex: 1; display: flex; justify-content: center; }
 
         .hero-img {
@@ -112,7 +116,7 @@
         }
 
         .problem-wrapper {
-            display: flex; gap: 50px; align-items: center; justify-content: space-between;
+            display: flex; gap: 50px; align-items: flex-start; justify-content: space-between;
         }
 
         .question-box { flex: 1; min-width: 300px; }
@@ -130,8 +134,34 @@
         .option-item.wrong { border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05); opacity: 0.6; }
         .option-item.correct { border-color: var(--correct-green); background: rgba(34, 197, 94, 0.1); font-weight: bold; color: #dcfce7; }
 
-        .explanation-visual { flex: 1; width: 100%; display: flex; justify-content: center; }
-        .blackboard-svg { width: 100%; height: auto; max-width: 550px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        /* Visual da Explicação */
+        .explanation-column { flex: 1; width: 100%; display: flex; flex-direction: column; gap: 20px; }
+        
+        .blackboard-svg { 
+            width: 100%; height: auto; max-width: 550px; 
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); 
+        }
+
+        /* O Box do Macete */
+        .macete-box {
+            border: 2px solid var(--wrong-red);
+            background: rgba(239, 68, 68, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .macete-title {
+            color: var(--wrong-red);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .macete-text {
+            font-size: 0.95rem;
+            color: #ffcccc;
+        }
 
         /* BIO SECTION */
         .bio-section { padding: 80px 0; }
@@ -195,10 +225,11 @@
 
         @media (max-width: 900px) {
             .hero, .bio-wrapper, .ebook-promo, .problem-wrapper { flex-direction: column; text-align: center; gap: 30px; }
+            .hero-cta-group { align-items: center; } /* Centraliza no mobile */
             .hero-img-wrapper { width: 100%; }
             .hero-img { max-width: 280px; }
             .question-box { text-align: left; width: 100%; }
-            .explanation-visual { width: 100%; }
+            .explanation-column { width: 100%; }
             .btn { width: 100%; box-sizing: border-box; }
             .price-card.featured { transform: scale(1); }
             .price-card.featured:hover { transform: translateY(-5px); }
@@ -219,10 +250,13 @@
                 Domine o Enem Americano.
             </h1>
             <p>Engenheiro formado nos Estados Unidos te mostra como entender a lógica do SAT e conquistar uma nota acima de 750/800.</p>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; md:justify-content: flex-start;">
+            
+            <div class="hero-cta-group">
                 <a href="https://wa.me/5541999999999?text=Olá,%20quero%20agendar%20minha%20Sessão%20de%20Estratégia%20Gratuita." class="btn">Sessão Estratégica Grátis</a>
+                <p style="font-size: 0.9rem; color: #22c55e; margin: 0;">
+                    <i class="fas fa-video"></i> Videochamada de 15 min comigo para analisar seu perfil
+                </p>
             </div>
-            <p style="font-size: 0.85rem; color: #22c55e; margin-top: 10px;"><i class="fas fa-check-circle"></i> 15 minutos para analisar seu perfil</p>
         </div>
         
         <div class="hero-img-wrapper" data-aos="fade-left">
@@ -250,25 +284,44 @@
                     </ul>
                 </div>
 
-                <div class="explanation-visual" data-aos="zoom-in">
+                <div class="explanation-column" data-aos="zoom-in">
+                    
                     <svg class="blackboard-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                         <rect x="0" y="0" width="500" height="320" rx="15" fill="#1e293b" stroke="#334155" stroke-width="4"/>
-                        <text x="30" y="40" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12" font-weight="bold">ENGINEER'S TOOLKIT: REMAINDER THEOREM</text>
+                        <text x="30" y="40" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12" font-weight="bold">TOOLKIT DO ENGENHEIRO: TEOREMA DO RESTO</text>
                         <line x1="30" y1="50" x2="470" y2="50" stroke="#334155" stroke-width="2"/>
+                        
                         <text x="50" y="100" fill="#f8fafc" font-family="'Kalam', cursive" font-size="20">Input: <tspan fill="#fbbf24">x = 3</tspan></text>
+                        
                         <text x="230" y="150" fill="#fff" font-family="'Inter', sans-serif" font-size="30" font-weight="bold">⇔</text>
-                        <text x="215" y="175" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="10">IS THE SAME AS</text>
+                        <text x="220" y="175" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="10">É O MESMO QUE</text>
+                        
                         <rect x="40" y="120" width="160" height="80" rx="8" fill="rgba(251, 191, 36, 0.1)" stroke="#fbbf24" stroke-dasharray="5,5"/>
                         <text x="80" y="165" fill="#fbbf24" font-family="'Kalam', cursive" font-size="24">P(3) = -2</text>
+                        
                         <rect x="300" y="100" width="160" height="120" rx="8" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8"/>
-                        <text x="320" y="130" fill="#38bdf8" font-family="'Kalam', cursive" font-size="18">Divide by (<tspan fill="#fbbf24">x - 3</tspan>)</text>
+                        <text x="320" y="130" fill="#38bdf8" font-family="'Kalam', cursive" font-size="18">Divide por (<tspan fill="#fbbf24">x - 3</tspan>)</text>
                         <line x1="320" y1="145" x2="440" y2="145" stroke="#38bdf8" stroke-width="1"/>
-                        <text x="320" y="170" fill="#f8fafc" font-family="'Kalam', cursive" font-size="18">Remainder: <tspan fill="#fbbf24" font-weight="bold">-2</tspan></text>
+                        <text x="320" y="170" fill="#f8fafc" font-family="'Kalam', cursive" font-size="18">Resto: <tspan fill="#fbbf24" font-weight="bold">-2</tspan></text>
+                        
                         <path d="M 380 230 Q 380 260 250 260" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-                        <text x="50" y="285" fill="#22c55e" font-family="'Kalam', cursive" font-size="18" font-weight="bold">Option D is the definition!</text>
-                        <text x="50" y="305" fill="#ef4444" font-family="'Space Mono', monospace" font-size="11">// Factor only if Remainder = 0</text>
+                        
+                        <text x="50" y="285" fill="#22c55e" font-family="'Kalam', cursive" font-size="18" font-weight="bold">Opção D é a definição!</text>
+                        
                         <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e" /></marker></defs>
                     </svg>
+
+                    <div class="macete-box">
+                        <div class="macete-title">
+                            <i class="fas fa-exclamation-triangle"></i> MACETE: ELIMINAÇÃO
+                        </div>
+                        <div class="macete-text">
+                            Para que <strong>(x - c)</strong> seja um FATOR, precisamos que o resto seja <strong>ZERO</strong> (P(c) = 0).<br><br>
+                            O problema disse que <strong>P(3) = -2</strong>. Como não é zero, sabemos imediatamente que (x-3) não é fator.<br><br>
+                            <i class="fas fa-bolt" style="color: var(--primary)"></i> <strong>Resultado:</strong> Eliminamos A, B e C em segundos porque todas falam em "factor". Sobra apenas a D.
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
