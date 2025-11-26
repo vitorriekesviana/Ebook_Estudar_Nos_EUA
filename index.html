@@ -16,8 +16,8 @@
         :root {
             --bg-dark: #0f172a; 
             --bg-card: #1e293b;
-            --primary: #fbbf24; /* Dourado */
-            --accent-blue: #38bdf8; /* Azul Técnico */
+            --primary: #fbbf24; 
+            --accent-blue: #38bdf8;
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
             --correct-green: #22c55e;
@@ -35,7 +35,6 @@
             overflow-x: hidden;
         }
 
-        /* Fundo Grid Sutil */
         body::before {
             content: "";
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -52,7 +51,6 @@
             box-sizing: border-box;
         }
 
-        /* Navbar */
         nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
         .logo { 
             font-family: 'Space Mono', monospace; 
@@ -60,7 +58,7 @@
             color: var(--primary); letter-spacing: -1px; text-decoration: none;
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero { 
             display: flex; align-items: center; justify-content: space-between; 
             padding: 60px 0 80px 0; gap: 50px; 
@@ -77,9 +75,7 @@
 
         .hero p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; }
         
-        .hero-img-wrapper {
-            flex: 1; display: flex; justify-content: center;
-        }
+        .hero-img-wrapper { flex: 1; display: flex; justify-content: center; }
 
         .hero-img {
             width: 100%; max-width: 320px; height: auto; aspect-ratio: 3/4;
@@ -90,12 +86,16 @@
         .btn {
             display: inline-block; background: var(--primary); color: var(--bg-dark);
             padding: 14px 30px; font-weight: 700; text-decoration: none;
-            border-radius: 6px; transition: 0.3s; text-align: center;
+            border-radius: 6px; transition: 0.3s; text-align: center; border: none; cursor: pointer;
         }
         .btn:hover { 
             transform: translateY(-3px); box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2); 
             background-color: #fcd34d;
         }
+        .btn-outline {
+            background: transparent; border: 2px solid var(--primary); color: var(--primary);
+        }
+        .btn-outline:hover { background: var(--primary); color: var(--bg-dark); }
 
         /* PROBLEM SECTION */
         .problem-section {
@@ -108,66 +108,84 @@
             display: flex; gap: 50px; align-items: center; justify-content: space-between;
         }
 
-        /* Lado Esquerdo: Questão */
         .question-box { flex: 1; min-width: 300px; }
-
-        .question-text { 
-            margin-bottom: 25px; font-size: 1.25rem; line-height: 1.5; 
-            font-family: 'Times New Roman', serif;
-        }
-        
-        .math-var { 
-            font-style: italic; font-family: 'Times New Roman', serif; font-weight: bold;
-        }
+        .question-text { margin-bottom: 25px; font-size: 1.25rem; line-height: 1.5; font-family: 'Times New Roman', serif; }
+        .math-var { font-style: italic; font-family: 'Times New Roman', serif; font-weight: bold; }
 
         .options-list { list-style: none; padding: 0; margin: 0; }
-        
         .option-item {
             padding: 12px 15px; margin-bottom: 12px;
             border: 1px solid #334155; border-radius: 8px;
-            cursor: default; transition: 0.2s;
-            display: flex; align-items: center;
-            font-family: 'Times New Roman', serif; font-size: 1.1rem;
-            background: rgba(15, 23, 42, 0.3);
+            cursor: default; transition: 0.2s; display: flex; align-items: center;
+            font-family: 'Times New Roman', serif; font-size: 1.1rem; background: rgba(15, 23, 42, 0.3);
         }
+        .opt-letter { font-weight: bold; margin-right: 15px; color: var(--text-gray); font-family: 'Inter', sans-serif; font-size: 1rem; }
+        .option-item.wrong { border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05); opacity: 0.6; }
+        .option-item.correct { border-color: var(--correct-green); background: rgba(34, 197, 94, 0.1); font-weight: bold; color: #dcfce7; }
+
+        .explanation-visual { flex: 1; width: 100%; display: flex; justify-content: center; }
+        .blackboard-svg { width: 100%; height: auto; max-width: 550px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+
+        /* PRICING SECTION */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-top: 50px;
+        }
+
+        .price-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+        .price-card.featured {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(251, 191, 36, 0.1));
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+        .price-card.featured:hover { transform: scale(1.08); }
+
+        .badge {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: var(--primary); color: #000;
+            padding: 5px 15px; border-radius: 20px;
+            font-weight: bold; font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .price-title { font-size: 1.5rem; margin-bottom: 10px; color: var(--text-light); }
         
-        .opt-letter { 
-            font-weight: bold; margin-right: 15px; color: var(--text-gray); 
-            font-family: 'Inter', sans-serif; font-size: 1rem;
+        .price-amount { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; font-family: 'Space Mono', monospace; }
+        .price-period { font-size: 1rem; color: var(--text-gray); font-weight: normal; }
+        .price-installments { color: #22c55e; font-size: 0.9rem; margin-top: -5px; margin-bottom: 20px; font-weight: bold; }
+
+        .price-features { list-style: none; padding: 0; margin-bottom: 30px; flex: 1; }
+        .price-features li { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; font-size: 0.95rem; }
+        .price-features i { color: var(--primary); margin-right: 10px; }
+
+        /* CTA SECTION */
+        .cta-box {
+            background: linear-gradient(to right, #1e293b, #0f172a);
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 80px;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
         }
 
-        .option-item.wrong { 
-            border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05); opacity: 0.6; 
+        footer {
+            text-align: center; padding: 40px 0; color: var(--text-gray); 
+            font-size: 0.9rem; border-top: 1px solid #334155; margin-top: 60px;
         }
-        .option-item.correct { 
-            border-color: var(--correct-green); background: rgba(34, 197, 94, 0.1); 
-            font-weight: bold; color: #dcfce7;
-        }
-
-        /* Lado Direito: SVG */
-        .explanation-visual {
-            flex: 1; width: 100%; display: flex; justify-content: center;
-        }
-
-        .blackboard-svg {
-            width: 100%; height: auto; max-width: 550px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-        }
-
-        /* Cards Metodologia */
-        .grid-3 { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; margin-top: 50px; 
-        }
-        
-        .card { 
-            background: rgba(30, 41, 59, 0.4); padding: 30px; 
-            border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); 
-            transition: transform 0.2s;
-        }
-        
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .card h3 { color: var(--primary); margin-top: 0; margin-bottom: 10px; font-size: 1.3rem; }
 
         /* WhatsApp Float */
         .whatsapp-float {
@@ -180,11 +198,6 @@
         }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        footer {
-            text-align: center; padding: 40px 0; color: var(--text-gray); 
-            font-size: 0.9rem; border-top: 1px solid #334155; margin-top: 40px;
-        }
-
         @media (max-width: 900px) {
             .hero { flex-direction: column; text-align: center; gap: 30px; }
             .hero-img-wrapper { width: 100%; }
@@ -193,6 +206,8 @@
             .question-box { text-align: left; width: 100%; }
             .explanation-visual { width: 100%; }
             .btn { width: 100%; box-sizing: border-box; }
+            .price-card.featured { transform: scale(1); }
+            .price-card.featured:hover { transform: translateY(-5px); }
         }
     </style>
 </head>
@@ -208,8 +223,11 @@
                 // USF BIOMEDICAL ENGINEERING
             </div>
             <h1>Não estude matemática.<br>Domine a lógica.</h1>
-            <p>Engenheiro formado nos EUA (GPA 3.7). Eu ensino a estrutura oculta do SAT que os cursinhos brasileiros ignoram.</p>
-            <a href="https://wa.me/5541999999999?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico%20SAT." class="btn">Agendar Diagnóstico</a>
+            <p>Engenheiro formado nos EUA (GPA 3.7). Aprenda a estrutura oculta do SAT e garanta seu 750+.</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; md:justify-content: flex-start;">
+                <a href="https://wa.me/5541999999999?text=Olá,%20quero%20agendar%20minha%20Sessão%20de%20Estratégia%20Gratuita." class="btn">Sessão Estratégica Grátis</a>
+            </div>
+            <p style="font-size: 0.85rem; color: #22c55e; margin-top: 10px;"><i class="fas fa-check-circle"></i> 15 minutos para analisar seu perfil</p>
         </div>
         
         <div class="hero-img-wrapper">
@@ -225,95 +243,111 @@
             </div>
 
             <div class="problem-wrapper">
-                
                 <div class="question-box">
                     <p class="question-text">
                         For a polynomial <span class="math-var">p(x)</span>, the value of <span class="math-var">p(3)</span> is <span class="math-var">-2</span>. Which of the following must be true about <span class="math-var">p(x)</span>?
                     </p>
-                    
                     <ul class="options-list">
-                        <li class="option-item wrong">
-                            <span class="opt-letter">A)</span> <span class="math-var">x - 5</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.
-                        </li>
-                        <li class="option-item wrong">
-                            <span class="opt-letter">B)</span> <span class="math-var">x - 2</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.
-                        </li>
-                        <li class="option-item wrong">
-                            <span class="opt-letter">C)</span> <span class="math-var">x + 2</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.
-                        </li>
-                        <li class="option-item correct">
-                            <span class="opt-letter">D)</span> The remainder when&nbsp; <span class="math-var">p(x)</span> &nbsp;is divided by&nbsp; <span class="math-var">x - 3</span> &nbsp;is&nbsp; <span class="math-var">-2</span>.
-                        </li>
+                        <li class="option-item wrong"><span class="opt-letter">A)</span> <span class="math-var">x - 5</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.</li>
+                        <li class="option-item wrong"><span class="opt-letter">B)</span> <span class="math-var">x - 2</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.</li>
+                        <li class="option-item wrong"><span class="opt-letter">C)</span> <span class="math-var">x + 2</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.</li>
+                        <li class="option-item correct"><span class="opt-letter">D)</span> The remainder when&nbsp; <span class="math-var">p(x)</span> &nbsp;is divided by&nbsp; <span class="math-var">x - 3</span> &nbsp;is&nbsp; <span class="math-var">-2</span>.</li>
                     </ul>
-                    <div style="margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-gray);">
-                        <i class="fas fa-arrow-right" style="color: var(--primary); margin-right: 8px;"></i> Veja a lógica do engenheiro:
-                    </div>
                 </div>
 
                 <div class="explanation-visual">
                     <svg class="blackboard-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
                         <rect x="0" y="0" width="500" height="320" rx="15" fill="#1e293b" stroke="#334155" stroke-width="4"/>
-                        
                         <text x="30" y="40" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12" font-weight="bold">ENGINEER'S TOOLKIT: REMAINDER THEOREM</text>
                         <line x1="30" y1="50" x2="470" y2="50" stroke="#334155" stroke-width="2"/>
-
                         <text x="50" y="100" fill="#f8fafc" font-family="'Kalam', cursive" font-size="20">Input: <tspan fill="#fbbf24">x = 3</tspan></text>
-                        
                         <text x="230" y="150" fill="#fff" font-family="'Inter', sans-serif" font-size="30" font-weight="bold">⇔</text>
                         <text x="215" y="175" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="10">IS THE SAME AS</text>
-
                         <rect x="40" y="120" width="160" height="80" rx="8" fill="rgba(251, 191, 36, 0.1)" stroke="#fbbf24" stroke-dasharray="5,5"/>
                         <text x="80" y="165" fill="#fbbf24" font-family="'Kalam', cursive" font-size="24">P(3) = -2</text>
-
                         <rect x="300" y="100" width="160" height="120" rx="8" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8"/>
-                        
                         <text x="320" y="130" fill="#38bdf8" font-family="'Kalam', cursive" font-size="18">Divide by (<tspan fill="#fbbf24">x - 3</tspan>)</text>
                         <line x1="320" y1="145" x2="440" y2="145" stroke="#38bdf8" stroke-width="1"/>
                         <text x="320" y="170" fill="#f8fafc" font-family="'Kalam', cursive" font-size="18">Remainder: <tspan fill="#fbbf24" font-weight="bold">-2</tspan></text>
-
                         <path d="M 380 230 Q 380 260 250 260" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-                        
                         <text x="50" y="285" fill="#22c55e" font-family="'Kalam', cursive" font-size="18" font-weight="bold">Option D is the definition!</text>
-
                         <text x="50" y="305" fill="#ef4444" font-family="'Space Mono', monospace" font-size="11">// Factor only if Remainder = 0</text>
-
-                        <defs>
-                            <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-                                <path d="M0,0 L0,6 L9,3 z" fill="#22c55e" />
-                            </marker>
-                        </defs>
+                        <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e" /></marker></defs>
                     </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container">
-        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Por que Engenharia na USF faz diferença?</h2>
-        <div class="grid-3">
-            <div class="card">
-                <i class="fas fa-graduation-cap fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Credential Real</h3>
-                <p>Muitos tutores nunca pisaram numa faculdade americana. Eu me formei lá. Sei a linguagem e a cultura.</p>
+    <section class="container" style="padding: 80px 0;">
+        <h2 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;">Invista no seu Futuro</h2>
+        <p style="text-align: center; color: var(--text-gray); margin-bottom: 50px;">Parcelamento em até <span style="color: var(--primary); font-weight: bold;">12x sem juros</span> disponível.</p>
+        
+        <div class="pricing-grid">
+            
+            <div class="price-card">
+                <h3 class="price-title">Deep Dive</h3>
+                <div class="price-amount">69<small>,90</small></div>
+                <div class="price-period">Mensais (12x sem juros)</div>
+                <div class="price-installments">ou R$ 838,80 à vista</div>
+                
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> <strong>5 Aulas</strong> Individuais (1h cada)</li>
+                    <li><i class="fas fa-check"></i> <strong>5 Simulados</strong> Oficiais</li>
+                    <li><i class="fas fa-check"></i> Foco nas suas Dificuldades</li>
+                    <li><i class="fas fa-check"></i> Cronograma Personalizado</li>
+                </ul>
+                <a href="https://wa.me/5541999999999?text=Olá,%20tenho%20interesse%20no%20Plano%20Deep%20Dive." class="btn btn-outline">Escolher Plano</a>
             </div>
-            <div class="card">
-                <i class="fas fa-brain fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Teoria de Verdade</h3>
-                <p>Eu não ensino "chute". Ensino os teoremas matemáticos fundamentais que resolvem a prova com certeza absoluta.</p>
+
+            <div class="price-card featured">
+                <div class="badge">MAIS POPULAR</div>
+                <h3 class="price-title">Mentoria Completa</h3>
+                <div class="price-amount">99<small>,90</small></div>
+                <div class="price-period">Mensais (12x sem juros)</div>
+                <div class="price-installments">ou R$ 1.198,80 à vista</div>
+                
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> <strong>10 Aulas</strong> Individuais (1h cada)</li>
+                    <li><i class="fas fa-check"></i> <strong>10 Simulados</strong> Oficiais</li>
+                    <li><i class="fas fa-check"></i> <strong>Ebook:</strong> Guia Estudar Fora</li>
+                    <li><i class="fas fa-check"></i> Estratégia de Application</li>
+                    <li><i class="fas fa-check"></i> Suporte WhatsApp Ilimitado</li>
+                </ul>
+                <a href="https://wa.me/5541999999999?text=Olá,%20tenho%20interesse%20na%20Mentoria%20Completa." class="btn">Garantir Vaga</a>
             </div>
-            <div class="card">
-                <i class="fas fa-chart-line fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Target Score 750+</h3>
-                <p>Especializado em alunos que já são bons, mas precisam fechar a prova para entrar em Ivy Leagues ou Top Tier Schools.</p>
+
+            <div class="price-card">
+                <h3 class="price-title">Avulso & Materiais</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem;">Para necessidades pontuais</p>
+                
+                <ul class="price-features" style="margin-top: 20px;">
+                    <li style="display: flex; justify-content: space-between;">
+                        <span><i class="fas fa-book"></i> Ebook Completo</span>
+                        <strong style="color: var(--primary);">R$ 49,90</strong>
+                    </li>
+                    <li style="display: flex; justify-content: space-between;">
+                        <span><i class="fas fa-video"></i> Aula Avulsa (1h)</span>
+                        <strong style="color: var(--primary);">R$ 180,00</strong>
+                    </li>
+                </ul>
+                <a href="https://wa.me/5541999999999?text=Olá,%20tenho%20interesse%20em%20uma%20Aula%20Avulsa%20ou%20Ebook." class="btn btn-outline">Comprar Avulso</a>
             </div>
+
         </div>
     </section>
 
-    <section style="text-align: center; padding: 80px 0;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Vamos garantir seu 750+?</h2>
-        <p style="color: var(--text-gray); margin-bottom: 30px; font-size: 1.1rem;">Vagas limitadas para acompanhamento individual.</p>
-        <a href="https://wa.me/5541999999999?text=Olá,%20gostaria%20de%20agendar%20um%20diagnóstico%20SAT." class="btn">Solicitar Diagnóstico</a>
-    </section>
+    <div class="container">
+        <div class="cta-box">
+            <h2 style="font-size: 2rem; margin-bottom: 15px;">Ainda não sabe qual o melhor caminho?</h2>
+            <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 30px auto;">
+                Não gaste dinheiro sem ter certeza. Agende sua <strong>Sessão de Estratégia Gratuita (15 min)</strong> e descubra seu potencial de nota.
+            </p>
+            <a href="https://wa.me/5541999999999?text=Olá,%20gostaria%20de%20agendar%20minha%20Sessão%20Estratégica%20Gratuita." class="btn" style="background-color: #22c55e; color: white;">
+                <i class="fab fa-whatsapp"></i> Agendar Diagnóstico Grátis
+            </a>
+        </div>
+    </div>
 
     <footer>
         <p>© 2025 SAT Math Prep - Todos os direitos reservados.</p>
