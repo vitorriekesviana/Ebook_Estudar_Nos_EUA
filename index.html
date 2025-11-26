@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAT Math Tutoring | Raciocínio de Engenharia</title>
+    <title>SAT: Math | Engineering Approach</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
             --bg-dark: #0f172a; 
             --bg-card: #1e293b;
-            --primary: #fbbf24; /* Dourado Amarelo */
-            --accent-blue: #38bdf8; /* Azul Ciano Técnico */
+            --primary: #fbbf24; /* Dourado */
+            --accent-blue: #38bdf8; /* Azul Técnico */
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
-            --usf-green: #006747; 
+            --correct-green: #22c55e;
+            --wrong-red: #ef4444;
         }
 
         body {
@@ -27,286 +28,233 @@
             line-height: 1.6;
         }
 
-        /* Grid Background sutil */
+        /* Fundo Grid Sutil */
         body::before {
             content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
-            z-index: -1;
-            pointer-events: none;
+            z-index: -1; pointer-events: none;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         /* Navbar */
-        nav {
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
+        nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--primary); letter-spacing: -1px; }
 
         /* HERO */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px 0 80px 0;
-            gap: 50px;
-        }
-
+        .hero { display: flex; align-items: center; justify-content: space-between; padding: 60px 0 80px 0; gap: 50px; }
         .hero-text { flex: 1; }
-
+        
         .hero h1 {
-            font-size: 3.2rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: 3.2rem; line-height: 1.1; margin-bottom: 20px;
             background: -webkit-linear-gradient(0deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 30px;
-        }
-
-        /* Moldura da Foto */
-        .hero-img-wrapper {
-            flex: 1;
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-
+        
         .hero-img {
-            width: 320px;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--primary);
+            width: 320px; height: 400px; object-fit: cover;
+            border-radius: 12px; border: 1px solid var(--primary);
             box-shadow: 15px 15px 0px rgba(251, 191, 36, 0.1);
         }
 
-        /* Botões */
         .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--bg-dark);
-            padding: 12px 30px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: 0.3s;
+            display: inline-block; background: var(--primary); color: var(--bg-dark);
+            padding: 12px 30px; font-weight: 700; text-decoration: none;
+            border-radius: 6px; transition: 0.3s;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2); }
 
-        /* SEÇÃO DE EXEMPLO TÉCNICO */
+        /* SECTION: PROBLEM BREAKDOWN */
         .problem-section {
-            background: var(--bg-card);
-            padding: 60px 0;
+            background: var(--bg-card); padding: 60px 0;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .problem-container {
-            display: flex;
-            align-items: flex-start; /* Alinhamento no topo */
-            gap: 50px;
+        .problem-wrapper {
+            display: flex; gap: 40px; align-items: center;
         }
 
-        .problem-text { flex: 1; }
-        
-        /* Estilo para o "Cartão de Teorema" (Visual Blueprint) */
-        .blueprint-card {
+        /* Lado Esquerdo: A Questão (Simulando Papel/Prova) */
+        .question-box {
             flex: 1;
-            background: rgba(15, 23, 42, 0.8);
-            border: 2px solid var(--accent-blue);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
-            position: relative;
-            max-width: 450px;
-        }
-        /* Linhas de "projeto" decorativas */
-        .blueprint-card::after {
-            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px dashed rgba(56, 189, 248, 0.3); pointer-events: none;
+            font-family: 'Times New Roman', serif; /* Fonte clássica de prova SAT antiga/livros */
+            font-size: 1.15rem;
         }
 
-        .blueprint-card h3 {
-            color: var(--accent-blue);
-            font-family: 'Space Mono', monospace;
-            margin-top: 0; letter-spacing: 1px;
-        }
+        .question-text { margin-bottom: 20px; font-size: 1.3rem; line-height: 1.4; }
+        .math-var { font-style: italic; font-family: 'Times New Roman', serif; }
 
-        .theorem-statement {
-            font-size: 1.1rem;
-            border-left: 3px solid var(--primary);
-            padding-left: 15px;
-            margin: 20px 0;
-        }
-        .theorem-statement strong { color: var(--primary); }
-
-        .code-block {
-            background: #0f172a;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--text-gray);
+        .options-list { list-style: none; padding: 0; }
+        .option-item {
+            padding: 10px 15px;
+            margin-bottom: 10px;
             border: 1px solid #334155;
+            border-radius: 6px;
+            cursor: default;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .opt-letter { font-weight: bold; margin-right: 10px; color: var(--text-gray); }
+
+        /* Destaques visuais nas alternativas para mostrar o erro/acerto */
+        .option-item.wrong { border-color: var(--wrong-red); background: rgba(239, 68, 68, 0.05); opacity: 0.7; }
+        .option-item.correct { border-color: var(--correct-green); background: rgba(34, 197, 94, 0.1); font-weight: bold; }
+
+        /* Lado Direito: A Explicação Visual (SVG) */
+        .explanation-visual {
+            flex: 1;
+            width: 100%;
+        }
+
+        .blackboard-svg {
+            width: 100%;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
 
         /* Cards Metodologia */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-        .card {
-            background: rgba(30, 41, 59, 0.4);
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .card { background: rgba(30, 41, 59, 0.4); padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
         .card h3 { color: var(--primary); margin-top: 0; }
 
-        /* WhatsApp Float */
+        /* WhatsApp */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
             background: #25d366; color: white;
             width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            text-decoration: none; z-index: 100; transition: 0.3s;
+            font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; z-index: 100; transition: 0.3s;
         }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        @media (max-width: 768px) {
-            .hero, .problem-container { flex-direction: column; text-align: center; }
+        @media (max-width: 850px) {
+            .hero, .problem-wrapper { flex-direction: column; text-align: center; }
             .hero-img { width: 100%; max-width: 300px; }
-            .blueprint-card { width: 100%; max-width: none; box-sizing: border-box; }
-            .problem-container { align-items: center; }
-            .theorem-statement { text-align: left; }
+            .question-box { text-align: left; }
         }
     </style>
 </head>
 <body>
 
     <nav class="container">
-        <div class="logo"> &lt;SAT_MATH /&gt; </div>
+        <div class="logo">SAT: Math</div>
     </nav>
 
     <header class="container hero">
         <div class="hero-text">
             <div style="color: var(--primary); font-weight: bold; margin-bottom: 10px; font-family: 'Space Mono', monospace;">
-                // USF ENGINEERING GRADUATE (GPA 3.7)
+                // USF BIOMEDICAL ENGINEERING
             </div>
-            <h1>Matemática SAT: <br>Além da Decoreba.</h1>
-            <p>Eu sou Engenheiro formado nos EUA. Eu não ensino apenas a resolver contas; ensino os teoremas fundamentais que a maioria dos estudantes brasileiros desconhece.</p>
+            <h1>Não estude matemática.<br>Domine a lógica.</h1>
+            <p>Engenheiro formado nos EUA (GPA 3.7). Eu ensino a estrutura oculta do SAT que os cursinhos brasileiros ignoram.</p>
             <a href="https://wa.me/5541999999999" class="btn">Agendar Diagnóstico</a>
         </div>
         
         <div class="hero-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Sua Foto" class="hero-img">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Tutor SAT" class="hero-img">
         </div>
     </header>
 
     <section class="problem-section">
-        <div class="container problem-container">
-            
-            <div class="blueprint-card">
-                <h3><i class="fas fa-ruler-combined"></i> ENGINEERING TOOLKIT: <br>THE REMAINDER THEOREM</h3>
-                
-                <p class="theorem-statement">
-                    Se um polinômio <strong>P(x)</strong> é dividido pelo binômio <strong>(x - c)</strong>, 
-                    então o resto <strong>R</strong> dessa divisão é exatamente igual a <strong>P(c)</strong>.
-                </p>
-                
-                <div class="code-block">
-                    // Aplicando ao problema da imagem:<br>
-                    <br>
-                    INPUT: P(3) = -2<br>
-                    <br>
-                    // Interpretação do Engenheiro:<br>
-                    Isso significa que "c" é 3.<br>
-                    Logo, se dividirmos P(x) por (x - 3),<br>
-                    o resto SERÁ -2.<br>
-                    <br>
-                    OUTPUT: Alternativa D está correta.
-                </div>
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="margin-bottom: 5px;">O Método na Prática</h2>
+                <p style="color: var(--text-gray);">Uma questão "difícil" de polinômios resolvida em 10 segundos.</p>
             </div>
 
-            <div class="problem-text">
-                <h2>O Diferencial: Teoria que Ninguém Ensina</h2>
-                <p>Essa é uma questão clássica do SAT que derruba brasileiros. Por que? Porque tentam "adivinhar" o polinômio ou fazer divisões longas, em vez de usar a definição teórica.</p>
-
-                <h3>A Lógica do Engenheiro:</h3>
-                <p>Eu não perco tempo. Eu vejo $P(3) = -2$ e imediatamente aciono o <strong>Teorema do Resto</strong> (explicado no painel técnico ao lado). A resposta D é a definição literal do teorema.</p>
-
-                <h3>Por que A, B e C estão erradas? (O Teorema do Fator)</h3>
-                <p>Para que um binômio $(x - c)$ seja um <strong>FATOR</strong> de um polinômio, a divisão deve ser exata. Ou seja, o resto deve ser ZERO.</p>
-                <p>Pelo Teorema do Resto, isso só acontece se $P(c) = 0$.</p>
+            <div class="problem-wrapper">
                 
-                <ul style="list-style: none; padding: 0; font-family: 'Space Mono', monospace; font-size: 0.9rem; margin-top: 20px;">
-                    <li style="margin-bottom: 15px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 5px;">
-                        <span style="color: #ef4444; font-weight: bold;">❌ A) (x-5) é fator?</span><br>
-                        Só seria verdade se P(5) = 0. O problema não disse isso.
-                    </li>
-                    <li style="margin-bottom: 15px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 5px;">
-                        <span style="color: #ef4444; font-weight: bold;">❌ B) (x-2) é fator?</span><br>
-                        Só seria verdade se P(2) = 0. Não sabemos.
-                    </li>
-                    <li style="margin-bottom: 15px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 5px;">
-                        <span style="color: #ef4444; font-weight: bold;">❌ C) (x+2) é fator?</span><br>
-                        Note que x+2 é x-(-2). Só seria verdade se P(-2) = 0.
-                    </li>
-                </ul>
+                <div class="question-box">
+                    <p class="question-text">
+                        For a polynomial <span class="math-var">p(x)</span>, the value of <span class="math-var">p(3)</span> is <span class="math-var">-2</span>. Which of the following must be true about <span class="math-var">p(x)</span>?
+                    </p>
+                    
+                    <ul class="options-list">
+                        <li class="option-item wrong">
+                            <span class="opt-letter">A)</span> <span class="math-var">x - 5</span> is a factor of <span class="math-var">p(x)</span>.
+                        </li>
+                        <li class="option-item wrong">
+                            <span class="opt-letter">B)</span> <span class="math-var">x - 2</span> is a factor of <span class="math-var">p(x)</span>.
+                        </li>
+                        <li class="option-item wrong">
+                            <span class="opt-letter">C)</span> <span class="math-var">x + 2</span> is a factor of <span class="math-var">p(x)</span>.
+                        </li>
+                        <li class="option-item correct">
+                            <span class="opt-letter">D)</span> The remainder when <span class="math-var">p(x)</span> is divided by <span class="math-var">x - 3</span> is <span class="math-var">-2</span>.
+                        </li>
+                    </ul>
+                    <div style="margin-top: 20px; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--text-gray);">
+                        <i class="fas fa-arrow-right" style="color: var(--primary);"></i> Veja a lógica do engenheiro ao lado.
+                    </div>
+                </div>
+
+                <div class="explanation-visual">
+                    <svg class="blackboard-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="500" height="320" rx="15" fill="#1e293b" stroke="#334155" stroke-width="4"/>
+                        
+                        <text x="30" y="40" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12">ENGINEER'S TOOLKIT: REMAINDER THEOREM</text>
+                        <line x1="30" y1="50" x2="470" y2="50" stroke="#334155" stroke-width="2"/>
+
+                        <text x="50" y="100" fill="#f8fafc" font-family="'Kalam', cursive" font-size="20">Input: <tspan fill="#fbbf24">x = 3</tspan></text>
+                        
+                        <text x="230" y="150" fill="#fff" font-family="'Inter', sans-serif" font-size="30" font-weight="bold">⇔</text>
+                        <text x="215" y="175" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="10">IS THE SAME AS</text>
+
+                        <rect x="40" y="120" width="160" height="80" rx="8" fill="rgba(251, 191, 36, 0.1)" stroke="#fbbf24" stroke-dasharray="5,5"/>
+                        <text x="80" y="165" fill="#fbbf24" font-family="'Kalam', cursive" font-size="24">P(3) = -2</text>
+
+                        <rect x="300" y="100" width="160" height="120" rx="8" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8"/>
+                        
+                        <text x="320" y="130" fill="#38bdf8" font-family="'Kalam', cursive" font-size="18">Divide by (<tspan fill="#fbbf24">x - 3</tspan>)</text>
+                        <line x1="320" y1="145" x2="440" y2="145" stroke="#38bdf8" stroke-width="1"/>
+                        <text x="320" y="170" fill="#f8fafc" font-family="'Kalam', cursive" font-size="18">Remainder: <tspan fill="#fbbf24" font-weight="bold">-2</tspan></text>
+
+                        <path d="M 380 230 Q 380 260 250 260" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+                        <text x="50" y="265" fill="#22c55e" font-family="'Kalam', cursive" font-size="18" font-weight="bold">Option D is the definition!</text>
+
+                        <text x="50" y="295" fill="#ef4444" font-family="'Space Mono', monospace" font-size="11">// Factor only if Remainder = 0</text>
+
+                        <defs>
+                            <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#22c55e" />
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="container">
-        <h2 style="text-align: center; margin-bottom: 40px;">Por que escolher um Engenheiro da USF?</h2>
+        <h2 style="text-align: center; margin-bottom: 40px;">Por que Engenharia na USF faz diferença?</h2>
         <div class="grid-3">
             <div class="card">
-                <i class="fas fa-university fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Vivência Real (Flórida)</h3>
-                <p>Morei e me formei nos EUA. Sei o nível de inglês e a terminologia matemática exata que a prova exige.</p>
+                <i class="fas fa-graduation-cap fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Credential Real</h3>
+                <p>Muitos tutores nunca pisaram numa faculdade americana. Eu me formei lá. Sei a linguagem e a cultura.</p>
             </div>
             <div class="card">
-                <i class="fas fa-microchip fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Eficiência Analítica</h3>
-                <p>Ensino você a olhar para a questão e identificar qual ferramenta teórica usar em segundos, sem "contas de padaria".</p>
+                <i class="fas fa-brain fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Teoria de Verdade</h3>
+                <p>Como visto acima, eu não ensino "chute". Ensino os teoremas matemáticos que resolvem a prova em segundos.</p>
             </div>
             <div class="card">
                 <i class="fas fa-chart-line fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Foco no Hardest 20%</h3>
-                <p>Se você já é bom em matemática, meu foco é nas questões conceituais difíceis (como a de polinômios acima) que te levam dos 650 para os 750+.</p>
+                <h3>Target Score 750+</h3>
+                <p>Especializado em alunos que já são bons, mas precisam fechar a prova para entrar em Ivy Leagues ou Top Tier Schools.</p>
             </div>
         </div>
     </section>
 
     <section style="text-align: center; padding: 80px 0;">
-        <h2 style="font-size: 2.5rem;">Target: 750+ Math</h2>
-        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 30px auto;">Não deixe a base fraca do ensino médio brasileiro te impedir de estudar fora. Mentoria individual e técnica.</p>
+        <h2 style="font-size: 2.5rem;">Vamos garantir seu 750+?</h2>
+        <p style="color: var(--text-gray); margin-bottom: 30px;">Vagas limitadas para acompanhamento individual.</p>
         <a href="https://wa.me/5541999999999" class="btn">Solicitar Diagnóstico</a>
     </section>
 
