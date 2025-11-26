@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAT Math Tutoring | Engenharia da Nota</title>
+    <title>SAT Math Tutoring | Raciocínio de Engenharia</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
             --bg-dark: #0f172a; 
             --bg-card: #1e293b;
-            --primary: #fbbf24; /* Dourado */
-            --accent-blue: #38bdf8; /* Azul claro para destaque matemático */
+            --primary: #fbbf24; /* Dourado Amarelo */
+            --accent-blue: #38bdf8; /* Azul Ciano Técnico */
             --text-light: #f8fafc;
             --text-gray: #94a3b8;
             --usf-green: #006747; 
@@ -116,7 +116,7 @@
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(251, 191, 36, 0.2); }
 
-        /* SEÇÃO DE EXEMPLO (NOVIDADE) */
+        /* SEÇÃO DE EXEMPLO TÉCNICO */
         .problem-section {
             background: var(--bg-card);
             padding: 60px 0;
@@ -126,21 +126,52 @@
 
         .problem-container {
             display: flex;
-            align-items: center;
-            gap: 40px;
+            align-items: flex-start; /* Alinhamento no topo */
+            gap: 50px;
         }
 
         .problem-text { flex: 1; }
         
-        /* A Imagem SVG Gerada */
-        .blackboard-svg {
+        /* Estilo para o "Cartão de Teorema" (Visual Blueprint) */
+        .blueprint-card {
             flex: 1;
-            width: 100%;
-            max-width: 500px;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-            transition: transform 0.3s;
+            background: rgba(15, 23, 42, 0.8);
+            border: 2px solid var(--accent-blue);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+            position: relative;
+            max-width: 450px;
         }
-        .blackboard-svg:hover { transform: scale(1.02); }
+        /* Linhas de "projeto" decorativas */
+        .blueprint-card::after {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px dashed rgba(56, 189, 248, 0.3); pointer-events: none;
+        }
+
+        .blueprint-card h3 {
+            color: var(--accent-blue);
+            font-family: 'Space Mono', monospace;
+            margin-top: 0; letter-spacing: 1px;
+        }
+
+        .theorem-statement {
+            font-size: 1.1rem;
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+        .theorem-statement strong { color: var(--primary); }
+
+        .code-block {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            border: 1px solid #334155;
+        }
 
         /* Cards Metodologia */
         .grid-3 {
@@ -171,7 +202,9 @@
         @media (max-width: 768px) {
             .hero, .problem-container { flex-direction: column; text-align: center; }
             .hero-img { width: 100%; max-width: 300px; }
-            .blackboard-svg { width: 100%; }
+            .blueprint-card { width: 100%; max-width: none; box-sizing: border-box; }
+            .problem-container { align-items: center; }
+            .theorem-statement { text-align: left; }
         }
     </style>
 </head>
@@ -184,11 +217,11 @@
     <header class="container hero">
         <div class="hero-text">
             <div style="color: var(--primary); font-weight: bold; margin-bottom: 10px; font-family: 'Space Mono', monospace;">
-                // USF BIOMEDICAL ENGINEERING
+                // USF ENGINEERING GRADUATE (GPA 3.7)
             </div>
-            <h1>Matemática SAT: <br>Raciocínio de Engenheiro.</h1>
-            <p>Eu sou um Engenheiro Biomédico formado nos EUA com GPA 3.7. Eu não ensino "truques"; ensino a lógica analítica necessária para superar os 750 pontos.</p>
-            <a href="https://wa.me/5541999999999" class="btn">Agendar Aula</a>
+            <h1>Matemática SAT: <br>Além da Decoreba.</h1>
+            <p>Eu sou Engenheiro formado nos EUA. Eu não ensino apenas a resolver contas; ensino os teoremas fundamentais que a maioria dos estudantes brasileiros desconhece.</p>
+            <a href="https://wa.me/5541999999999" class="btn">Agendar Diagnóstico</a>
         </div>
         
         <div class="hero-img-wrapper">
@@ -199,77 +232,81 @@
     <section class="problem-section">
         <div class="container problem-container">
             
-            <svg class="blackboard-svg" viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="0" width="500" height="350" rx="15" fill="#1e293b" stroke="#334155" stroke-width="4"/>
+            <div class="blueprint-card">
+                <h3><i class="fas fa-ruler-combined"></i> ENGINEERING TOOLKIT: <br>THE REMAINDER THEOREM</h3>
                 
-                <text x="30" y="45" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="14">EXAMPLO: SYSTEM OF EQUATIONS</text>
-                <line x1="30" y1="55" x2="470" y2="55" stroke="#334155" stroke-width="2"/>
-
-                <text x="40" y="90" fill="#f8fafc" font-family="'Kalam', cursive" font-size="22">1) 3x + 2y = 16</text>
-                <text x="40" y="125" fill="#f8fafc" font-family="'Kalam', cursive" font-size="22">2) y = x + 3</text>
-
-                <path d="M 150 125 Q 200 125 220 100" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+                <p class="theorem-statement">
+                    Se um polinômio <strong>P(x)</strong> é dividido pelo binômio <strong>(x - c)</strong>, 
+                    então o resto <strong>R</strong> dessa divisão é exatamente igual a <strong>P(c)</strong>.
+                </p>
                 
-                <text x="240" y="90" fill="#fbbf24" font-family="'Space Mono', monospace" font-size="14" font-weight="bold">STEP 1: SUBSTITUTION</text>
-                <text x="240" y="120" fill="#38bdf8" font-family="'Kalam', cursive" font-size="20">3x + 2(<tspan fill="#fbbf24">x + 3</tspan>) = 16</text>
-
-                <text x="240" y="155" fill="#38bdf8" font-family="'Kalam', cursive" font-size="20">3x + 2x + 6 = 16</text>
-                <text x="240" y="185" fill="#38bdf8" font-family="'Kalam', cursive" font-size="20">5x = 10</text>
-                
-                <rect x="235" y="200" width="100" height="40" rx="5" fill="rgba(56, 189, 248, 0.2)" stroke="#38bdf8"/>
-                <text x="260" y="228" fill="#fff" font-family="'Kalam', cursive" font-size="24" font-weight="bold">x = 2</text>
-
-                <text x="40" y="300" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12">
-                    // A maioria erra sinal aqui.
-                </text>
-                <text x="40" y="315" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12">
-                    // Foco na organização = Velocidade.
-                </text>
-
-                <defs>
-                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-                        <path d="M0,0 L0,6 L9,3 z" fill="#fbbf24" />
-                    </marker>
-                </defs>
-            </svg>
+                <div class="code-block">
+                    // Aplicando ao problema da imagem:<br>
+                    <br>
+                    INPUT: P(3) = -2<br>
+                    <br>
+                    // Interpretação do Engenheiro:<br>
+                    Isso significa que "c" é 3.<br>
+                    Logo, se dividirmos P(x) por (x - 3),<br>
+                    o resto SERÁ -2.<br>
+                    <br>
+                    OUTPUT: Alternativa D está correta.
+                </div>
+            </div>
 
             <div class="problem-text">
-                <h2>Como eu ensino</h2>
-                <p>O segredo do SAT não é decorar fórmulas complexas, mas dominar o básico com velocidade absurda.</p>
-                <p>Nesta visualização, mostro como transformo um sistema de equações — que muitos demoram 3 minutos para resolver — em um processo linear de 40 segundos.</p>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color:var(--primary)"></i> <strong>Organização Visual:</strong> Engenheiros não cometem erros bobos por desorganização.</li>
-                    <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color:var(--primary)"></i> <strong>Álgebra Pura:</strong> Fundamentos sólidos para quando a calculadora não ajuda.</li>
+                <h2>O Diferencial: Teoria que Ninguém Ensina</h2>
+                <p>Essa é uma questão clássica do SAT que derruba brasileiros. Por que? Porque tentam "adivinhar" o polinômio ou fazer divisões longas, em vez de usar a definição teórica.</p>
+
+                <h3>A Lógica do Engenheiro:</h3>
+                <p>Eu não perco tempo. Eu vejo $P(3) = -2$ e imediatamente aciono o <strong>Teorema do Resto</strong> (explicado no painel técnico ao lado). A resposta D é a definição literal do teorema.</p>
+
+                <h3>Por que A, B e C estão erradas? (O Teorema do Fator)</h3>
+                <p>Para que um binômio $(x - c)$ seja um <strong>FATOR</strong> de um polinômio, a divisão deve ser exata. Ou seja, o resto deve ser ZERO.</p>
+                <p>Pelo Teorema do Resto, isso só acontece se $P(c) = 0$.</p>
+                
+                <ul style="list-style: none; padding: 0; font-family: 'Space Mono', monospace; font-size: 0.9rem; margin-top: 20px;">
+                    <li style="margin-bottom: 15px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 5px;">
+                        <span style="color: #ef4444; font-weight: bold;">❌ A) (x-5) é fator?</span><br>
+                        Só seria verdade se P(5) = 0. O problema não disse isso.
+                    </li>
+                    <li style="margin-bottom: 15px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 5px;">
+                        <span style="color: #ef4444; font-weight: bold;">❌ B) (x-2) é fator?</span><br>
+                        Só seria verdade se P(2) = 0. Não sabemos.
+                    </li>
+                    <li style="margin-bottom: 15px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 5px;">
+                        <span style="color: #ef4444; font-weight: bold;">❌ C) (x+2) é fator?</span><br>
+                        Note que x+2 é x-(-2). Só seria verdade se P(-2) = 0.
+                    </li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section class="container">
-        <h2 style="text-align: center; margin-bottom: 40px;">Diferenciais do Engenheiro</h2>
+        <h2 style="text-align: center; margin-bottom: 40px;">Por que escolher um Engenheiro da USF?</h2>
         <div class="grid-3">
             <div class="card">
                 <i class="fas fa-university fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Graduação USF</h3>
-                <p>Formado em Engenharia Biomédica na Flórida. Sei exatamente o nível de inglês e matemática exigido lá fora.</p>
+                <h3>Vivência Real (Flórida)</h3>
+                <p>Morei e me formei nos EUA. Sei o nível de inglês e a terminologia matemática exata que a prova exige.</p>
             </div>
             <div class="card">
-                <i class="fas fa-search fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Análise de Padrões</h3>
-                <p>Acumulei experiência com +20 alunos identificando os padrões repetitivos da prova. Nada é surpresa.</p>
+                <i class="fas fa-microchip fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                <h3>Eficiência Analítica</h3>
+                <p>Ensino você a olhar para a questão e identificar qual ferramenta teórica usar em segundos, sem "contas de padaria".</p>
             </div>
             <div class="card">
                 <i class="fas fa-chart-line fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Estatística Aplicada</h3>
-                <p>Domínio total de Data Analysis e Statistics, tópicos cada vez mais cobrados no novo SAT Digital.</p>
+                <h3>Foco no Hardest 20%</h3>
+                <p>Se você já é bom em matemática, meu foco é nas questões conceituais difíceis (como a de polinômios acima) que te levam dos 650 para os 750+.</p>
             </div>
         </div>
     </section>
 
     <section style="text-align: center; padding: 80px 0;">
         <h2 style="font-size: 2.5rem;">Target: 750+ Math</h2>
-        <p style="color: var(--text-gray);">Mentoria individual para quem leva o futuro a sério.</p>
-        <br>
+        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 30px auto;">Não deixe a base fraca do ensino médio brasileiro te impedir de estudar fora. Mentoria individual e técnica.</p>
         <a href="https://wa.me/5541999999999" class="btn">Solicitar Diagnóstico</a>
     </section>
 
