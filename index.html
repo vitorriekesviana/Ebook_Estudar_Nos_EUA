@@ -15,6 +15,55 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+    /* --- CSS DA LISTA DE QUESTÕES (ATUALIZADO) --- */
+        .option-item {
+            padding: 12px 15px; margin-bottom: 12px;
+            border: 1px solid #334155; border-radius: 8px;
+            cursor: default; transition: 0.2s; 
+            /* MUDANÇA AQUI: Alinha items no topo para texto longo não quebrar layout */
+            display: flex; 
+            align-items: flex-start; 
+            font-family: 'Times New Roman', serif; font-size: 1.1rem; background: rgba(15, 23, 42, 0.3);
+        }
+        
+        .opt-letter { 
+            font-weight: bold; margin-right: 10px; 
+            color: var(--text-gray); font-family: 'Inter', sans-serif; font-size: 1rem;
+            /* MUDANÇA AQUI: Impede que o A) B) C) seja esmagado */
+            flex-shrink: 0; 
+            margin-top: 2px; /* Ajuste fino vertical */
+        }
+
+        /* NOVA CLASSE: Para o texto quebrar linha corretamente */
+        .option-txt {
+            flex: 1; /* Ocupa todo o espaço restante */
+        }
+
+        /* --- CORREÇÃO MOBILE (SUBSTITUA O SEU @MEDIA EXISTENTE POR ESTE) --- */
+        @media (max-width: 900px) {
+            .hero, .bio-wrapper, .ebook-promo, .problem-wrapper { flex-direction: column; text-align: center; gap: 30px; }
+            .hero-cta-group { align-items: center; }
+            .hero-img-wrapper { width: 100%; }
+            .hero-img { max-width: 280px; }
+            
+            .question-box { text-align: left; width: 100%; }
+            
+            /* MUDANÇA AQUI: Garante que a coluna do SVG ocupe tudo */
+            .explanation-column { width: 100%; margin-top: 20px; }
+            
+            /* MUDANÇA AQUI: Força o SVG a crescer */
+            .blackboard-svg { 
+                width: 100%; 
+                max-width: none; 
+                height: auto;
+                transform: scale(1.1); /* Um leve zoom para compensar bordas */
+            }
+            
+            .btn { width: 100%; box-sizing: border-box; }
+            .price-card.featured { transform: scale(1); }
+            .price-card.featured:hover { transform: translateY(-5px); }
+            .bio-stats { grid-template-columns: 1fr; text-align: left; }
+        }
         :root {
             --bg-dark: #0f172a; 
             --bg-card: #1e293b;
@@ -273,10 +322,24 @@
                         For a polynomial <span class="math-var">p(x)</span>, the value of <span class="math-var">p(3)</span> is <span class="math-var">-2</span>. Which of the following must be true about <span class="math-var">p(x)</span>?
                     </p>
                     <ul class="options-list">
-                        <li class="option-item wrong"><span class="opt-letter">A)</span> <span class="math-var">x - 5</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.</li>
-                        <li class="option-item wrong"><span class="opt-letter">B)</span> <span class="math-var">x - 2</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.</li>
-                        <li class="option-item wrong"><span class="opt-letter">C)</span> <span class="math-var">x + 2</span> &nbsp;is a factor of&nbsp; <span class="math-var">p(x)</span>.</li>
-                        <li class="option-item correct"><span class="opt-letter">D)</span> The remainder when&nbsp; <span class="math-var">p(x)</span> &nbsp;is divided by&nbsp; <span class="math-var">x - 3</span> &nbsp;is&nbsp; <span class="math-var">-2</span>.</li>
+                        <li class="option-item wrong">
+                            <span class="opt-letter">A)</span> 
+                            <div class="option-txt"><span class="math-var">x - 5</span> is a factor of <span class="math-var">p(x)</span>.</div>
+                        </li>
+                        <li class="option-item wrong">
+                            <span class="opt-letter">B)</span>
+                            <div class="option-txt"><span class="math-var">x - 2</span> is a factor of <span class="math-var">p(x)</span>.</div>
+                        </li>
+                        <li class="option-item wrong">
+                            <span class="opt-letter">C)</span>
+                            <div class="option-txt"><span class="math-var">x + 2</span> is a factor of <span class="math-var">p(x)</span>.</div>
+                        </li>
+                        <li class="option-item correct">
+                            <span class="opt-letter">D)</span> 
+                            <div class="option-txt">
+                                The remainder when <span class="math-var">p(x)</span> is divided by <span class="math-var">x - 3</span> is <span class="math-var">-2</span>.
+                            </div>
+                        </li>
                     </ul>
                 </div>
 
