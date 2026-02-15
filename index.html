@@ -35,7 +35,7 @@
             overflow-x: hidden;
         }
 
-        /* Background Pattern */
+        /* Pattern de Fundo */
         body::before {
             content: "";
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -50,6 +50,7 @@
             box-sizing: border-box;
         }
 
+        /* --- NAV --- */
         nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
         .logo { 
             font-family: 'Space Mono', monospace; 
@@ -58,10 +59,10 @@
             border: 1px solid var(--primary); padding: 5px 15px; border-radius: 4px;
         }
 
-        /* HERO SECTION */
+        /* --- HERO SECTION (Foco no Ebook) --- */
         .hero { 
             display: flex; align-items: center; justify-content: space-between; 
-            padding: 60px 0 100px 0; gap: 60px; 
+            padding: 60px 0 80px 0; gap: 60px; 
         }
         
         .hero-text { flex: 1.2; }
@@ -82,15 +83,6 @@
             font-size: 1.25rem; color: var(--text-gray); margin-bottom: 30px; 
             border-left: 4px solid var(--usf-green); padding-left: 20px;
         }
-        
-        .hero-img-wrapper { flex: 0.8; display: flex; justify-content: center; position: relative; }
-
-        .hero-img {
-            width: 100%; max-width: 320px; height: auto; aspect-ratio: 3/4;
-            object-fit: cover; border-radius: 12px; 
-            border: 2px solid var(--usf-green);
-            box-shadow: 20px 20px 0px rgba(0, 103, 71, 0.2);
-        }
 
         .btn {
             display: inline-block; background: var(--usf-green); color: #fff;
@@ -102,24 +94,28 @@
             transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 103, 71, 0.6); 
             background-color: #00855b;
         }
-        .btn-outline {
-            background: transparent; border: 2px solid var(--primary); color: var(--primary);
-        }
-        .btn-outline:hover { background: var(--primary); color: var(--bg-dark); }
 
-        /* FEATURES / WHAT YOU LEARN */
+        .hero-img {
+            width: 100%; max-width: 350px; height: auto;
+            border-radius: 12px; 
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
+            transform: rotate(-3deg);
+        }
+
+        /* --- FEATURES EBOOK (Propaganda) --- */
         .features-section {
-            background: var(--bg-card); padding: 80px 0;
+            background: rgba(30, 41, 59, 0.5); padding: 80px 0;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .grid-cards {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 50px;
         }
 
         .card {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15, 23, 42, 0.8);
             padding: 30px; border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
@@ -129,96 +125,99 @@
         .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
         .card p { color: var(--text-gray); font-size: 0.95rem; }
 
-        /* MATH PROOF SECTION (IMPORTED) */
-        .problem-wrapper {
-            display: flex; gap: 50px; align-items: center; justify-content: space-between; margin-top: 50px;
+        /* --- BLOCO DE PREÇO DO EBOOK --- */
+        .ebook-offer-box {
+            background: linear-gradient(135deg, rgba(0, 103, 71, 0.1) 0%, rgba(15, 23, 42, 1) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 20px; padding: 40px; text-align: center;
+            max-width: 700px; margin: 0 auto;
+            box-shadow: 0 0 50px rgba(251, 191, 36, 0.15);
         }
-        .question-box { flex: 1; min-width: 300px; }
-        .question-text { margin-bottom: 25px; font-size: 1.2rem; line-height: 1.5; font-family: 'Times New Roman', serif; }
-        .math-var { font-style: italic; font-family: 'Times New Roman', serif; font-weight: bold; }
-        .options-list { list-style: none; padding: 0; margin: 0; }
-        .option-item {
-            padding: 12px 15px; margin-bottom: 12px;
-            border: 1px solid #334155; border-radius: 8px;
-            cursor: default; transition: 0.2s; display: flex; align-items: center;
-            font-family: 'Times New Roman', serif; font-size: 1.1rem; background: rgba(15, 23, 42, 0.3);
-        }
-        .option-item.correct { border-color: var(--correct-green); background: rgba(34, 197, 94, 0.1); font-weight: bold; color: #dcfce7; }
-        .explanation-visual { flex: 1; width: 100%; display: flex; justify-content: center; }
-        .blackboard-svg { width: 100%; height: auto; max-width: 550px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .offer-old-price { text-decoration: line-through; color: var(--text-gray); font-size: 1.2rem; }
+        .offer-price { font-size: 3.5rem; font-weight: 800; color: var(--primary); font-family: 'Space Mono', monospace; line-height: 1; margin: 10px 0; }
+        .offer-installments { color: #22c55e; font-weight: bold; margin-bottom: 30px; display: block; }
 
-        /* BIO SECTION */
+
+        /* --- BIO & ACHIEVEMENTS --- */
         .bio-section { padding: 100px 0; }
-        .bio-header { text-align: center; margin-bottom: 60px; }
         
         .bio-grid {
-            display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: start;
-            margin-bottom: 40px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
         }
 
-        .bio-text p { margin-bottom: 20px; font-size: 1.05rem; color: #cbd5e1; }
+        .bio-text p { margin-bottom: 20px; font-size: 1.1rem; color: #cbd5e1; }
 
+        /* TRAJECTORY GRID - ESTILO IGUAL À IMAGEM ENVIADA */
         .trajectory-grid {
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
             gap: 20px; 
-            margin: 30px 0;
+            margin-top: 30px;
         }
         
         .traj-card {
-            background: rgba(15, 23, 42, 0.5);
-            padding: 20px;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 25px;
             border-radius: 8px;
-            border-left: 4px solid var(--primary);
-            display: flex; flex-direction: column; justify-content: center;
+            border-left: 4px solid var(--primary); /* A borda amarela da imagem */
+            display: flex; flex-direction: column; justify-content: start;
+            height: 100%;
         }
-        .traj-icon { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; }
-        .traj-title { font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 5px; }
+        .traj-icon { color: var(--primary); font-size: 1.5rem; margin-bottom: 15px; }
+        .traj-title { font-weight: 700; color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
         .traj-desc { color: var(--text-gray); font-size: 0.9rem; line-height: 1.4; }
 
-        /* PRICING SECTION (NEW) */
-        .pricing-section { padding: 50px 0 100px 0; }
+        /* APROVAÇÕES */
+        .approvals-wrapper {
+            margin-top: 60px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+        }
+        .approval-col h4 { color: var(--primary); font-family: 'Space Mono'; border-bottom: 1px solid var(--primary); padding-bottom: 10px; display: inline-block; margin-bottom: 20px; }
+        .approval-list { list-style: none; padding: 0; }
+        .approval-list li { margin-bottom: 10px; color: var(--text-gray); display: flex; align-items: center; }
+        .approval-list li i { color: var(--usf-green); margin-right: 10px; }
+        .full-ride-tag { background: var(--primary); color: #000; font-size: 0.7rem; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-left: 8px; }
+
+
+        /* --- SAT METHOD (Lousa) --- */
+        .sat-section { background: rgba(30, 41, 59, 0.3); padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+        .problem-wrapper { display: flex; gap: 50px; align-items: center; justify-content: space-between; }
+        .question-box { flex: 1; }
+        .question-text { font-family: 'Times New Roman', serif; font-size: 1.3rem; margin-bottom: 20px; }
+        .math-var { font-style: italic; font-weight: bold; }
+        .option-item.correct { border: 1px solid var(--correct-green); background: rgba(34, 197, 94, 0.1); padding: 10px; border-radius: 8px; color: #dcfce7; display: block; width: fit-content;}
+        .blackboard-svg { width: 100%; max-width: 500px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+
+
+        /* --- PLANS (Pricing) --- */
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         .price-card { 
             background: rgba(30, 41, 59, 0.6); 
             border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 15px; padding: 30px; 
-            text-align: center; transition: all 0.3s ease; 
-            position: relative; display: flex; flex-direction: column; 
+            text-align: center; position: relative; display: flex; flex-direction: column; transition: 0.3s;
         }
-        .price-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .price-card.featured { 
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(251, 191, 36, 0.1)); 
-            border: 2px solid var(--primary); 
-            transform: scale(1.05); z-index: 2; 
-        }
+        .price-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .price-card.featured { border: 2px solid var(--primary); background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(251, 191, 36, 0.05)); transform: scale(1.05); z-index: 2; }
         .price-card.featured:hover { transform: scale(1.08); }
+        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; }
         
-        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
-        
-        .price-title { font-size: 1.5rem; margin-bottom: 10px; color: var(--text-light); }
-        .price-amount { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; font-family: 'Space Mono', monospace; }
-        .price-original { text-decoration: line-through; color: var(--text-gray); font-size: 1rem; opacity: 0.7; }
-        .price-installments { color: #22c55e; font-size: 0.9rem; margin-top: -5px; margin-bottom: 20px; font-weight: bold; }
-        
-        .price-features { list-style: none; padding: 0; margin-bottom: 30px; flex: 1; text-align: left; }
-        .price-features li { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; font-size: 0.95rem; display: flex; align-items: flex-start; }
-        .price-features i { color: var(--primary); margin-right: 10px; margin-top: 4px; }
+        .price-features { list-style: none; padding: 0; margin-bottom: 30px; flex: 1; text-align: left; margin-top: 20px; }
+        .price-features li { margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; font-size: 0.9rem; }
+        .price-features i { color: var(--primary); margin-right: 8px; }
 
-        /* FOOTER & WHATSAPP */
-        footer { text-align: center; padding: 40px; border-top: 1px solid #334155; color: var(--text-gray); font-size: 0.9rem; margin-top: 60px; }
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; z-index: 100; transition: transform 0.3s; animation: pulse 2s infinite; }
-        .whatsapp-float:hover { transform: scale(1.1); animation: none; }
+        /* Footer & Float */
+        footer { text-align: center; padding: 40px; border-top: 1px solid #334155; color: var(--text-gray); font-size: 0.9rem; margin-top: 80px; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
         @media (max-width: 900px) {
-            .hero { flex-direction: column-reverse; text-align: center; }
-            .hero-img-wrapper { width: 100%; }
-            .hero p { border-left: none; border-top: 4px solid var(--usf-green); padding-top: 20px; padding-left: 0; }
-            .bio-grid { grid-template-columns: 1fr; }
-            .trajectory-grid { grid-template-columns: 1fr; }
-            .problem-wrapper { flex-direction: column; text-align: left; }
+            .hero, .bio-grid, .problem-wrapper, .approvals-wrapper { flex-direction: column; text-align: center; }
+            .hero-img { margin-top: 30px; width: 80%; }
+            .hero p { border: none; padding: 0; }
+            .trajectory-grid { grid-template-columns: 1fr; text-align: left; }
             .price-card.featured { transform: scale(1); }
+            .approvals-wrapper { text-align: left; }
         }
     </style>
 </head>
@@ -226,7 +225,7 @@
 
     <nav class="container" data-aos="fade-down">
         <a href="#" class="logo">VITOR | USF</a>
-        <a href="https://instagram.com" style="color: var(--text-light); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+        <a href="#" style="color: var(--text-light); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
     </nav>
 
     <header class="container hero">
@@ -234,65 +233,141 @@
             <div style="color: var(--primary); font-weight: bold; margin-bottom: 15px; font-family: 'Space Mono', monospace; font-size: 0.9rem; letter-spacing: 1px;">
                 // USF BIOMEDICAL ENGINEERING
             </div>
-            <h1>O Caminho Real para Estudar nos <span>EUA</span></h1>
-            <p>Aprenda a estratégia financeira e o método de SAT que me renderam aprovações nas 5 maiores universidades da Flórida.</p>
+            <h1>O Custo Real de Estudar nos <span>EUA</span></h1>
+            <p>Como me formei em Engenharia na Flórida pagando menos do que uma faculdade particular no Brasil. O mapa completo com recibos, essays e estratégia.</p>
             
-            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; md:justify-content: flex-start;">
-                <a href="#offers" class="btn">Ver Planos e Mentoria</a>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-gray); margin-top: 15px; border: none; padding: 0;">
-                <i class="fas fa-file-invoice-dollar" style="color: var(--primary)"></i> Estratégia comprovada: de Curitiba para o Full Ride.
-            </p>
+            <a href="#comprar-ebook" class="btn">Quero o Guia Completo</a>
         </div>
         
-        <div class="hero-img-wrapper" data-aos="fade-left">
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vitor USF Graduation" class="hero-img">
+        <div data-aos="fade-left">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Guia Estudar Fora" class="hero-img">
         </div>
     </header>
 
     <section class="features-section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 50px;" data-aos="fade-up">
-                <h2 style="font-size: 2rem;">Não é sorte, é Engenharia de Aplicação</h2>
-                <p style="color: var(--text-gray);">Dominando as duas barreiras: A Prova (SAT) e o Dinheiro.</p>
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">O que você vai aprender</h2>
+                <p style="color: var(--text-gray);">Caixa preta aberta: sem teorias, apenas o que funcionou.</p>
             </div>
 
             <div class="grid-cards">
                 <div class="card" data-aos="fade-up" data-aos-delay="0">
                     <i class="fas fa-money-check-alt"></i>
-                    <h3>Caixa Preta Financeira</h3>
-                    <p>Abro meus recibos reais. Aprenda a calcular o custo real e descubra como pagar menos que em uma particular no Brasil.</p>
+                    <h3>Financeiro Real</h3>
+                    <p>Meus recibos de pagamento e cartas de bolsa. Aprenda a calcular o custo real e fugir das dívidas.</p>
                 </div>
                 <div class="card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-calculator"></i>
-                    <h3>Hacking the SAT</h3>
-                    <p>Engenheiro formado nos EUA te ensina a lógica por trás da matemática do SAT para buscar o 750+.</p>
+                    <i class="fas fa-university"></i>
+                    <h3>College List</h3>
+                    <p>Como montei minha lista focando em universidades que oferecem <em>Financial Aid</em> para brasileiros.</p>
                 </div>
                 <div class="card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-pen-nib"></i>
-                    <h3>Essays de Aprovação</h3>
-                    <p>Leia os textos que me colocaram dentro da universidade e aprenda a usar Storytelling.</p>
+                    <h3>Essays Aprovadas</h3>
+                    <p>Leia os textos que me colocaram dentro da universidade. Storytelling na prática.</p>
                 </div>
                 <div class="card" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-passport"></i>
-                    <h3>Visto & Documentação</h3>
+                    <h3>Visto Aprovado</h3>
                     <p>O processo burocrático descomplicado: transcripts, tradução e a entrevista do visto (F-1).</p>
                 </div>
             </div>
 
-            <div class="problem-wrapper" style="background: rgba(15, 23, 42, 0.4); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
+            <div id="comprar-ebook" class="ebook-offer-box" data-aos="zoom-in">
+                <h3 style="color: #fff; margin-bottom: 5px;">Oferta de Lançamento</h3>
+                <span class="offer-old-price">De R$ 197,00</span>
+                <div class="offer-price">Por R$ 97,00</div>
+                <span class="offer-installments">ou 10x de R$ 9,70</span>
+                
+                <a href="#" class="btn" style="width: 100%; max-width: 300px; padding: 20px;">BAIXAR AGORA</a>
+                
+                <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 15px;">
+                    <i class="fas fa-gift"></i> Bônus: 1 Planilha de Organização de College List (Google Sheets)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bio-section container">
+        <div class="bio-grid">
+            
+            <div data-aos="fade-right">
+                <h2 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: 30px;">De Curitiba para a <span style="color: var(--primary);">Flórida</span></h2>
+                
+                <p>Meu nome é <strong>Vitor</strong>. Sou natural de Curitiba e fiz todo o meu ensino médio no Brasil. Eu sei exatamente o que é sonhar em estudar fora e travar na hora de ver os custos em dólar.</p>
+                <p>Descobri que o segredo não é ser rico, é ser estratégico. Essa mentalidade me rendeu aprovações em todas as melhores universidades da Flórida na graduação e, recentemente, um <strong>Full Ride (Bolsa 100% + Salário)</strong> para o mestrado.</p>
+
+                <div class="approvals-wrapper">
+                    <div class="approval-col">
+                        <h4>UNDERGRAD</h4>
+                        <ul class="approval-list">
+                            <li><i class="fas fa-check"></i> University of Florida</li>
+                            <li><i class="fas fa-check"></i> Florida State University</li>
+                            <li><i class="fas fa-check"></i> Univ. of Central Florida</li>
+                            <li><i class="fas fa-check" style="color: var(--primary)"></i> <strong>USF (Formado)</strong></li>
+                            <li><i class="fas fa-check"></i> Florida International Univ.</li>
+                        </ul>
+                    </div>
+                    <div class="approval-col">
+                        <h4>MASTER'S</h4>
+                        <ul class="approval-list">
+                            <li><i class="fas fa-star" style="color: var(--primary)"></i> <strong>Johns Hopkins</strong></li>
+                            <li><i class="fas fa-star" style="color: var(--primary)"></i> Clemson University</li>
+                            <li><i class="fas fa-star" style="color: var(--primary)"></i> <strong>NC A&T State</strong> <span class="full-ride-tag">FULL RIDE</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trajectory-grid" data-aos="fade-left">
+                <div class="traj-card">
+                    <i class="fas fa-microscope traj-icon"></i>
+                    <div class="traj-title">Pesquisador Acadêmico</div>
+                    <div class="traj-desc">Atuei em laboratórios de Alzheimer e Hospital de Câncer.</div>
+                </div>
+                <div class="traj-card">
+                    <i class="fas fa-home traj-icon"></i>
+                    <div class="traj-title">3 Anos como R.A.</div>
+                    <div class="traj-desc">Trabalhei como Resident Assistant e tive moradia e alimentação pagas pela universidade.</div>
+                </div>
+                <div class="traj-card">
+                    <i class="fas fa-chalkboard-teacher traj-icon"></i>
+                    <div class="traj-title">Paixão por Ensinar</div>
+                    <div class="traj-desc">Dou aulas de matemática desde a época da escola em Curitiba.</div>
+                </div>
+                <div class="traj-card">
+                    <i class="fas fa-star traj-icon"></i>
+                    <div class="traj-title">700+ Math SAT</div>
+                    <div class="traj-desc">Nota de elite construída com estratégia, não sorte.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="sat-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;" data-aos="fade-up">
+                <h2 style="font-size: 2rem;">O Método SAT Math</h2>
+                <p style="color: var(--text-gray);">Como engenheiro, eu não "acho" a resposta. Eu a construo.</p>
+            </div>
+
+            <div class="problem-wrapper">
                 <div class="question-box" data-aos="fade-right">
-                    <h3 style="color: var(--primary); font-family: 'Space Mono'; margin-bottom: 20px;">// O MÉTODO NA PRÁTICA</h3>
+                    <p style="font-family: 'Space Mono'; color: var(--primary); font-size: 0.9rem;">// EXEMPLO PRÁTICO</p>
                     <p class="question-text">
                         For a polynomial <span class="math-var">p(x)</span>, the value of <span class="math-var">p(3)</span> is <span class="math-var">-2</span>. Which of the following must be true?
                     </p>
-                    <ul class="options-list">
-                        <li class="option-item correct"><span class="opt-letter" style="margin-right: 10px; font-weight: bold;">D)</span> The remainder when&nbsp; <span class="math-var">p(x)</span> &nbsp;is divided by&nbsp; <span class="math-var">x - 3</span> &nbsp;is&nbsp; <span class="math-var">-2</span>.</li>
-                    </ul>
-                    <p style="font-size: 0.9rem; color: var(--text-gray); margin-top: 15px;">Meus alunos resolvem isso em 10 segundos usando o <em>Remainder Theorem</em>, sem fazer contas.</p>
+                    <div class="option-item correct">
+                        <span style="font-weight: bold;">D)</span> The remainder when <span class="math-var">p(x)</span> is divided by <span class="math-var">x - 3</span> is <span class="math-var">-2</span>.
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-gray);">
+                        A maioria perde 3 minutos tentando fatorar. Meus alunos resolvem em 10 segundos usando o <strong>Remainder Theorem</strong>.
+                    </p>
                 </div>
-
-                <div class="explanation-visual" data-aos="zoom-in">
+                
+                <div data-aos="zoom-in">
                     <svg class="blackboard-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0" y="0" width="500" height="320" rx="15" fill="#1e293b" stroke="#334155" stroke-width="4"/>
                         <text x="30" y="40" fill="#94a3b8" font-family="'Space Mono', monospace" font-size="12" font-weight="bold">ENGINEER'S TOOLKIT: REMAINDER THEOREM</text>
@@ -310,90 +385,55 @@
         </div>
     </section>
 
-    <section class="bio-section container">
-        <div class="bio-header" data-aos="fade-down">
-            <h2>DE CURITIBA PARA A FLÓRIDA</h2>
-            <div style="height: 4px; width: 60px; background: var(--primary); margin: 20px auto;"></div>
-        </div>
-
-        <div class="bio-grid">
-            <div class="bio-img-col" data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vitor Profile" style="width: 100%; border-radius: 12px; filter: grayscale(20%); box-shadow: -10px 10px 0 var(--bg-card), -10px 10px 0 2px var(--primary);">
-            </div>
-            
-            <div class="bio-text" data-aos="fade-left">
-                <p>Meu nome é <strong>Vitor</strong>. Sou natural de Curitiba e fiz todo o meu ensino médio no Brasil. Descobri que o segredo não é ser rico, é ser estratégico. Essa mentalidade me rendeu aprovações em todas as melhores universidades da Flórida.</p>
-
-                <div class="trajectory-grid">
-                    <div class="traj-card">
-                        <i class="fas fa-microscope traj-icon"></i>
-                        <div class="traj-title">Pesquisador Acadêmico</div>
-                        <div class="traj-desc">Atuei em laboratórios de Alzheimer e Hospital de Câncer nos EUA.</div>
-                    </div>
-                    <div class="traj-card">
-                        <i class="fas fa-star traj-icon"></i>
-                        <div class="traj-title">700+ Math SAT</div>
-                        <div class="traj-desc">Nota de elite construída com estratégia e lógica, não sorte.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing-section container" id="offers">
-        <h2 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;" data-aos="fade-down">Escolha sua Estratégia</h2>
-        <p style="text-align: center; color: var(--text-gray); margin-bottom: 50px;" data-aos="fade-down" data-aos-delay="100">Do guia básico à mentoria completa.</p>
+    <section class="container" style="padding: 80px 0;">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 10px;">Planos de Aceleração</h2>
+        <p style="text-align: center; color: var(--text-gray);">Escolha o nível de suporte que você precisa.</p>
         
         <div class="pricing-grid">
             
-            <div class="price-card" data-aos="fade-up" data-aos-delay="0">
-                <h3 class="price-title">Start</h3>
-                <div class="price-original">R$ 197</div>
-                <div class="price-amount">97</div>
-                <div class="price-installments">ou 10x R$ 9,70</div>
-                <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">Ideal para quem quer apenas o mapa e fazer sozinho.</p>
+            <div class="price-card" data-aos="fade-up">
+                <h3>Start</h3>
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary); margin: 10px 0;">R$ 97</div>
+                <span style="color: #22c55e; font-size: 0.9rem; margin-bottom: 20px;">10x R$ 9,70</span>
                 <ul class="price-features">
                     <li><i class="fas fa-book"></i> <strong>Ebook:</strong> Guia Estudar nos EUA</li>
-                    <li><i class="fas fa-table"></i> 1 Planilha: Org. College List</li>
+                    <li><i class="fas fa-table"></i> 1 Planilha de Organização</li>
                     <li><i class="fas fa-bolt"></i> Acesso Imediato</li>
                 </ul>
-                <a href="#" class="btn btn-outline">Começar Agora</a>
+                <a href="#" class="btn" style="background: transparent; border: 1px solid var(--primary); color: var(--primary);">Comprar Ebook</a>
             </div>
 
             <div class="price-card featured" data-aos="fade-up" data-aos-delay="100">
-                <div class="badge">RECOMENDADO</div>
-                <h3 class="price-title">Kit Completo</h3>
-                <div class="price-amount">197</div>
-                <div class="price-installments">Apenas R$ 100 a mais</div>
-                <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">Para quem quer todas as ferramentas e suporte.</p>
+                <div class="badge">MAIS POPULAR</div>
+                <h3>Kit Completo</h3>
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary); margin: 10px 0;">R$ 197</div>
+                <span style="color: #22c55e; font-size: 0.9rem; margin-bottom: 20px;">Preço Único</span>
                 <ul class="price-features">
-                    <li><i class="fas fa-book"></i> <strong>Ebook:</strong> Guia Estudar nos EUA</li>
+                    <li><i class="fas fa-check-double"></i> <strong>Tudo do Plano Start</strong></li>
                     <li><i class="fas fa-layer-group"></i> <strong>Todas as 5 Planilhas</strong></li>
-                    <li><i class="fab fa-whatsapp"></i> <strong>Grupo WhatsApp</strong> (Suporte)</li>
-                    <li><i class="fas fa-receipt"></i> Recibos e Cartas Reais</li>
+                    <li><i class="fab fa-whatsapp"></i> Grupo de Suporte WhatsApp</li>
+                    <li><i class="fas fa-users"></i> Comunidade de Alunos</li>
                 </ul>
-                <a href="#" class="btn">Garantir Kit Completo</a>
+                <a href="#" class="btn">Quero o Kit</a>
             </div>
 
             <div class="price-card" data-aos="fade-up" data-aos-delay="200" style="border-color: var(--usf-green);">
-                <h3 class="price-title">Mentoria + Aulas</h3>
-                <div class="price-original">R$ 1.150</div>
-                <div class="price-amount" style="color: var(--usf-green);">497</div>
-                <div class="price-installments">Oferta Limitada</div>
-                <p style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">Acompanhamento total com aulas particulares.</p>
+                <h3>High Ticket</h3>
+                <div style="font-size: 2rem; font-weight: bold; color: var(--usf-green); margin: 10px 0;">R$ 497</div>
+                <span style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 20px;">De R$ 1.150 por tempo limitado</span>
                 <ul class="price-features">
-                    <li><i class="fas fa-check-double"></i> <strong>Tudo do Kit Completo</strong></li>
-                    <li><i class="fas fa-video"></i> <strong>5 Aulas Particulares</strong> SAT Math</li>
-                    <li><i class="fas fa-headset"></i> <strong>3 Calls de Mentoria</strong> (1h cada)</li>
+                    <li><i class="fas fa-crown"></i> <strong>Tudo do Kit Completo</strong></li>
+                    <li><i class="fas fa-video"></i> <strong>5 Aulas Particulares SAT</strong></li>
+                    <li><i class="fas fa-headset"></i> 3 Calls de Mentoria (1h cada)</li>
                     <li><i class="fab fa-whatsapp"></i> Suporte Ilimitado (1 Ano)</li>
                 </ul>
-                <a href="https://wa.me/5541999999999?text=Olá,%20tenho%20interesse%20na%20Mentoria%20de%20497." class="btn" style="background-color: var(--usf-green);">Aplicar para Vaga</a>
+                <a href="https://wa.me/5541999999999" class="btn" style="background-color: var(--usf-green);">Aplicar para Vaga</a>
             </div>
 
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px; border-top: 1px solid #334155; color: var(--text-gray); font-size: 0.9rem;">
+    <footer>
         <p>&copy; 2026 Vitor USF Alumni. Todos os direitos reservados.</p>
     </footer>
 
