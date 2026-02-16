@@ -21,7 +21,7 @@
             --usf-green: #006747; /* USF Green */
             --accent-blue: #38bdf8;
             --text-light: #f8fafc;
-            --text-gray: #94a3b8;
+            --text-gray: #cbd5e1; /* Mais claro para leitura */
             --correct-green: #22c55e;
             --wrong-red: #ef4444;
         }
@@ -35,6 +35,7 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 18px; /* Base maior para desktop */
         }
 
         /* Pattern de Fundo */
@@ -48,227 +49,264 @@
             z-index: -1; pointer-events: none;
         }
 
+        /* Aumentei a largura máxima para preencher mais a tela */
         .container { 
-            width: 90%; max-width: 1100px; 
-            margin: 0 auto; padding: 0 15px;
+            width: 90%; max-width: 1280px; 
+            margin: 0 auto; padding: 0 20px;
             box-sizing: border-box;
         }
 
         /* NAV */
-        nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+        nav { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; }
         .logo { 
             font-family: 'Space Mono', monospace; 
-            font-weight: 700; font-size: 1.2rem; 
+            font-weight: 700; font-size: 1.5rem; 
             color: var(--primary); letter-spacing: -1px; text-decoration: none;
-            border: 1px solid var(--primary); padding: 5px 15px; border-radius: 4px;
+            border: 2px solid var(--primary); padding: 8px 20px; border-radius: 6px;
         }
 
-        /* --- 1. HERO (EBOOK FOCO) --- */
+        /* --- 1. HERO (IMPACTO VISUAL AUMENTADO) --- */
         .hero { 
             display: flex; align-items: center; justify-content: space-between; 
-            padding: 60px 0 80px 0; gap: 50px; 
+            padding: 80px 0 120px 0; gap: 80px; 
         }
         
         .hero-text { flex: 1.2; }
         
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.1; margin-bottom: 20px;
-            color: #fff;
+            font-size: clamp(3rem, 6vw, 5rem); /* Fonte Gigante */
+            line-height: 1.05; margin-bottom: 30px;
+            color: #fff; letter-spacing: -2px;
         }
         .hero h1 span { color: var(--primary); }
 
         .hero p { 
-            font-size: 1.2rem; color: var(--text-gray); margin-bottom: 30px; 
-            border-left: 4px solid var(--usf-green); padding-left: 20px;
+            font-size: 1.4rem; color: var(--text-gray); margin-bottom: 40px; 
+            border-left: 5px solid var(--usf-green); padding-left: 30px;
+            max-width: 90%;
         }
 
         .hero-img {
-            width: 100%; max-width: 350px; height: auto;
-            border-radius: 12px; border: 2px solid var(--primary);
-            box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
-            transform: rotate(-3deg);
+            width: 100%; max-width: 450px; height: auto; /* Imagem maior */
+            border-radius: 15px; border: 2px solid var(--primary);
+            box-shadow: 20px 20px 0 rgba(251, 191, 36, 0.1);
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
         }
+        .hero-img:hover { transform: rotate(0deg) scale(1.02); }
 
         .btn {
             display: inline-block; background: var(--usf-green); color: #fff;
-            padding: 18px 40px; font-weight: 700; text-decoration: none;
-            border-radius: 6px; transition: 0.3s; text-align: center; border: none; cursor: pointer;
-            font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0, 103, 71, 0.4);
+            padding: 20px 50px; font-weight: 700; text-decoration: none;
+            border-radius: 8px; transition: 0.3s; text-align: center; border: none; cursor: pointer;
+            font-size: 1.2rem; box-shadow: 0 10px 25px rgba(0, 103, 71, 0.3);
         }
         .btn:hover { 
-            transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0, 103, 71, 0.6); 
+            transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0, 103, 71, 0.5); 
             background-color: #00855b;
         }
-        .btn-outline {
-            background: transparent; border: 2px solid var(--primary); color: var(--primary);
-            padding: 14px 30px; font-weight: 700; text-decoration: none; border-radius: 6px;
-        }
-        .btn-outline:hover { background: var(--primary); color: var(--bg-dark); }
-
 
         /* --- 2. CONTEÚDOS EBOOK --- */
         .features-section {
-            background: rgba(30, 41, 59, 0.5); padding: 80px 0;
+            background: rgba(30, 41, 59, 0.5); padding: 100px 0;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .grid-cards {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;
         }
 
         .card {
             background: rgba(15, 23, 42, 0.8);
-            padding: 30px; border-radius: 12px;
+            padding: 40px; border-radius: 15px; /* Mais espaçamento interno */
             border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
-        .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
-        .card p { color: var(--text-gray); font-size: 0.95rem; }
+        .card:hover { border-color: var(--primary); transform: translateY(-8px); }
+        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .card p { color: var(--text-gray); font-size: 1.1rem; }
 
 
-        /* --- 3. PREÇO E COMPRAR --- */
+        /* --- 3. PREÇO E COMPRAR (BANNER) --- */
         .ebook-offer-box {
-            background: linear-gradient(135deg, rgba(0, 103, 71, 0.1) 0%, rgba(15, 23, 42, 1) 100%);
+            background: linear-gradient(135deg, rgba(0, 103, 71, 0.15) 0%, rgba(15, 23, 42, 1) 100%);
             border: 2px solid var(--primary);
-            border-radius: 20px; padding: 50px; text-align: center;
-            max-width: 800px; margin: 60px auto;
-            box-shadow: 0 0 50px rgba(251, 191, 36, 0.15);
+            border-radius: 25px; padding: 60px; text-align: center;
+            max-width: 900px; margin: 80px auto;
+            box-shadow: 0 0 80px rgba(251, 191, 36, 0.1);
         }
-        .offer-old-price { text-decoration: line-through; color: var(--text-gray); font-size: 1.2rem; }
-        .offer-price { font-size: 3.5rem; font-weight: 800; color: var(--primary); font-family: 'Space Mono', monospace; line-height: 1; margin: 10px 0; }
-        .offer-installments { color: #22c55e; font-weight: bold; margin-bottom: 30px; display: block; }
+        .offer-old-price { text-decoration: line-through; color: var(--text-gray); font-size: 1.4rem; }
+        .offer-price { font-size: 4.5rem; font-weight: 800; color: var(--primary); font-family: 'Space Mono', monospace; line-height: 1; margin: 15px 0; }
+        .offer-installments { color: #22c55e; font-weight: bold; font-size: 1.2rem; margin-bottom: 40px; display: block; }
 
 
-        /* --- 4. SOBRE MIM (LAYOUT CORRIGIDO) --- */
-        .bio-section { padding: 100px 0; }
+        /* --- 4. SOBRE MIM (LAYOUT AMPLIADO) --- */
+        .bio-section { padding: 120px 0; }
         
-        .bio-header { text-align: center; margin-bottom: 50px; }
-        .bio-header h2 { text-transform: uppercase; font-size: 1.5rem; letter-spacing: 2px; font-weight: 800; margin-bottom: 10px; }
-        .bio-header-line { width: 60px; height: 4px; background: var(--primary); margin: 0 auto; }
+        .bio-header { text-align: center; margin-bottom: 80px; }
+        .bio-header h2 { text-transform: uppercase; font-size: 2rem; letter-spacing: 3px; font-weight: 800; margin-bottom: 15px; }
+        .bio-header-line { width: 80px; height: 5px; background: var(--primary); margin: 0 auto; }
 
         .bio-main-row {
             display: grid;
-            grid-template-columns: 350px 1fr; /* Coluna da foto fixa, resto fluido */
-            gap: 60px;
+            grid-template-columns: 450px 1fr; /* Foto maior */
+            gap: 80px;
             align-items: start;
         }
 
         .bio-photo {
             width: 100%;
-            border-radius: 20px;
+            border-radius: 25px;
             border: 2px solid var(--primary);
-            box-shadow: -10px 10px 0 rgba(30, 41, 59, 1), -10px 10px 0 2px var(--primary);
+            box-shadow: -15px 15px 0 rgba(30, 41, 59, 1), -15px 15px 0 2px var(--primary);
             object-fit: cover;
             aspect-ratio: 3/4;
         }
 
-        .bio-text-side p { color: var(--text-gray); font-size: 1.05rem; margin-bottom: 25px; }
+        .bio-text-side p { color: var(--text-gray); font-size: 1.25rem; margin-bottom: 30px; line-height: 1.7; }
 
         /* Grid dos Cards 2x2 */
         .bio-cards-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;
         }
 
         .bio-card {
-            border-left: 4px solid var(--primary);
-            padding-left: 20px;
+            border-left: 5px solid var(--primary);
+            padding-left: 25px;
             display: flex; flex-direction: column; justify-content: flex-start;
         }
-        .bio-card i { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; }
-        .bio-card h4 { color: #fff; font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 700; }
-        .bio-card span { color: var(--text-gray); font-size: 0.9rem; line-height: 1.4; }
+        .bio-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .bio-card h4 { color: #fff; font-size: 1.3rem; margin: 0 0 10px 0; font-weight: 700; }
+        .bio-card span { color: var(--text-gray); font-size: 1.05rem; line-height: 1.5; }
 
         /* Aprovações */
         .approvals-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-            margin-top: 60px; padding-top: 40px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            margin-top: 80px; padding-top: 60px;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         .approval-col h3 {
             font-family: 'Space Mono', monospace; color: var(--primary);
-            border-bottom: 2px solid var(--primary); display: inline-block;
-            margin-bottom: 20px; padding-bottom: 5px; font-size: 1rem;
+            border-bottom: 3px solid var(--primary); display: inline-block;
+            margin-bottom: 25px; padding-bottom: 5px; font-size: 1.2rem;
         }
-        .approval-list li { margin-bottom: 10px; color: var(--text-gray); display: flex; align-items: center; }
-        .approval-list.undergrad li i { color: var(--correct-green); margin-right: 10px; }
-        .approval-list.masters li i { color: var(--primary); margin-right: 10px; }
-        .full-ride { background-color: var(--primary); color: #000; font-weight: bold; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 10px; }
+        .approval-list li { margin-bottom: 15px; color: var(--text-gray); display: flex; align-items: center; font-size: 1.1rem; }
+        .approval-list.undergrad li i { color: var(--correct-green); margin-right: 15px; }
+        .approval-list.masters li i { color: var(--primary); margin-right: 15px; }
+        .full-ride { background-color: var(--primary); color: #000; font-weight: bold; font-size: 0.8rem; padding: 3px 8px; border-radius: 4px; margin-left: 12px; }
 
 
         /* --- 5. SAT AULAS E MÉTODO --- */
         .problem-section {
-            background: var(--bg-card); padding: 80px 0;
+            background: var(--bg-card); padding: 100px 0;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .problem-wrapper { display: flex; gap: 50px; align-items: flex-start; justify-content: space-between; }
-        .question-box { flex: 1; min-width: 300px; }
-        .question-text { margin-bottom: 20px; font-size: 1.2rem; font-family: 'Times New Roman', serif; }
+        .problem-wrapper { display: flex; gap: 80px; align-items: flex-start; justify-content: space-between; }
+        .question-box { flex: 1; min-width: 350px; }
+        .question-text { margin-bottom: 30px; font-size: 1.4rem; font-family: 'Times New Roman', serif; color: #fff; }
         .math-var { font-style: italic; font-family: 'Times New Roman', serif; font-weight: bold; }
         
         .option-item {
-            padding: 12px 15px; margin-bottom: 10px;
-            border: 1px solid #334155; border-radius: 8px;
+            padding: 18px 20px; margin-bottom: 15px;
+            border: 1px solid #334155; border-radius: 10px;
             display: flex; align-items: flex-start; 
             font-family: 'Times New Roman', serif; background: rgba(15, 23, 42, 0.3);
+            font-size: 1.2rem;
         }
-        .opt-letter { font-weight: bold; margin-right: 10px; color: var(--text-gray); font-family: 'Inter', sans-serif; }
-        .option-item.correct { border-color: var(--correct-green); background: rgba(34, 197, 94, 0.1); color: #dcfce7; }
+        .opt-letter { font-weight: bold; margin-right: 15px; color: var(--text-gray); font-family: 'Inter', sans-serif; }
+        .option-item.correct { border-color: var(--correct-green); background: rgba(34, 197, 94, 0.1); color: #dcfce7; font-weight: bold; }
         
-        .blackboard-svg { width: 100%; height: auto; max-width: 550px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .blackboard-svg { width: 100%; height: auto; max-width: 600px; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5)); }
 
 
-        /* --- 6. PLANOS E ESTRATÉGIA (FORMATO ORIGINAL RESTAURADO) --- */
-        .pricing-section { padding: 80px 0; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        /* --- 6. PLANOS E ESTRATÉGIA (ATUALIZADO) --- */
+        .pricing-section { padding: 100px 0; }
+        
+        /* Grid Principal de 3 Colunas */
+        .pricing-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); /* 3 Colunas estritas no desktop */
+            gap: 40px; 
+            margin-top: 60px; 
+            align-items: stretch;
+        }
         
         .price-card { 
             background: rgba(30, 41, 59, 0.6); 
             border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 15px; padding: 30px; 
+            border-radius: 20px; padding: 40px; 
             text-align: center; transition: all 0.3s ease; 
             position: relative; display: flex; flex-direction: column; 
         }
-        .price-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .price-card:hover { transform: translateY(-12px); border-color: var(--primary); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
         
+        /* Destaque para o High Ticket ou Bundle */
         .price-card.featured { 
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(251, 191, 36, 0.1)); 
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(251, 191, 36, 0.08)); 
             border: 2px solid var(--primary); 
-            transform: scale(1.05); z-index: 2; 
+            transform: scale(1.08); z-index: 2; 
         }
-        .price-card.featured:hover { transform: scale(1.08); }
+        .price-card.featured:hover { transform: scale(1.12); }
         
-        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); }
+        .badge { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; padding: 6px 20px; border-radius: 20px; font-weight: bold; font-size: 1rem; box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4); white-space: nowrap; }
         
-        .price-title { font-size: 1.5rem; margin-bottom: 10px; color: var(--text-light); }
-        .price-amount { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; font-family: 'Space Mono', monospace; }
-        .price-period { font-size: 1rem; color: var(--text-gray); font-weight: normal; }
-        .price-installments { color: #22c55e; font-size: 0.9rem; margin-top: -5px; margin-bottom: 20px; font-weight: bold; }
+        .price-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--text-light); font-weight: 700; }
+        .price-amount { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 15px 0; font-family: 'Space Mono', monospace; line-height: 1; }
+        .price-original { text-decoration: line-through; color: var(--text-gray); font-size: 1.1rem; margin-bottom: -10px; display: block; }
+        .price-installments { color: #22c55e; font-size: 1rem; margin-top: 5px; margin-bottom: 30px; font-weight: bold; }
         
-        .price-features { list-style: none; padding: 0; margin-bottom: 30px; flex: 1; text-align: left; }
-        .price-features li { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; font-size: 0.95rem; }
-        .price-features i { color: var(--primary); margin-right: 10px; }
+        .price-features { list-style: none; padding: 0; margin-bottom: 40px; flex: 1; text-align: left; }
+        .price-features li { 
+            margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); 
+            padding-bottom: 12px; font-size: 1.05rem; display: flex; align-items: flex-start; 
+        }
+        .price-features i { color: var(--primary); margin-right: 12px; margin-top: 5px; }
+
+        /* Card Pequeno (Aula Avulsa) */
+        .small-card-wrapper {
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+        }
+        .small-card {
+            background: transparent;
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            max-width: 600px;
+            transition: 0.3s;
+        }
+        .small-card:hover { border-color: var(--text-gray); background: rgba(30, 41, 59, 0.4); }
+        .small-card-price { font-size: 1.8rem; font-weight: bold; color: var(--text-light); font-family: 'Space Mono'; }
 
 
         /* Footer */
-        footer { text-align: center; padding: 40px 0; color: var(--text-gray); font-size: 0.9rem; border-top: 1px solid #334155; margin-top: 60px; }
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        footer { text-align: center; padding: 60px 0; color: var(--text-gray); font-size: 1rem; border-top: 1px solid #334155; margin-top: 100px; }
+        .whatsapp-float { position: fixed; bottom: 40px; right: 40px; background: #25d366; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 100; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
-        /* Mobile */
-        @media (max-width: 900px) {
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
+             /* Tablet e Mobile */
             .hero, .problem-wrapper, .bio-main-row, .approvals-row { flex-direction: column; text-align: center; }
-            .hero-img { margin-top: 30px; }
+            .hero-img { margin-top: 40px; width: 80%; }
             .hero p { border: none; padding: 0; }
+            
             .bio-main-row { grid-template-columns: 1fr; }
-            .bio-photo-wrapper { max-width: 300px; margin: 0 auto; }
+            .bio-photo-wrapper { max-width: 400px; margin: 0 auto; }
             .bio-cards-grid { text-align: left; }
             .approvals-row { text-align: left; gap: 40px; }
+            
+            .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
             .price-card.featured { transform: scale(1); }
+            
+            .small-card { flex-direction: column; text-align: center; gap: 15px; }
         }
     </style>
 </head>
@@ -291,9 +329,9 @@
 
     <section class="features-section">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 50px;" data-aos="fade-up">
-                <h2 style="font-size: 2rem; margin-bottom: 10px;">O que você vai aprender</h2>
-                <p style="color: var(--text-gray);">Caixa preta aberta: sem teorias, apenas o que funcionou.</p>
+            <div style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
+                <h2 style="font-size: 2.5rem; margin-bottom: 15px;">O que você vai aprender</h2>
+                <p style="color: var(--text-gray); font-size: 1.2rem;">Caixa preta aberta: sem teorias, apenas o que funcionou.</p>
             </div>
             <div class="grid-cards">
                 <div class="card" data-aos="fade-up" data-aos-delay="0">
@@ -322,12 +360,12 @@
 
     <section class="container" id="comprar-ebook" data-aos="zoom-in">
         <div class="ebook-offer-box">
-            <h3 style="color: #fff; margin-bottom: 5px;">Oferta de Lançamento</h3>
+            <h3 style="color: #fff; margin-bottom: 5px; font-size: 1.5rem;">Oferta de Lançamento</h3>
             <span class="offer-old-price">De R$ 197,00</span>
             <div class="offer-price">Por R$ 97,00</div>
             <span class="offer-installments">ou 10x de R$ 9,70</span>
-            <a href="#" class="btn" style="width: 100%; max-width: 350px; padding: 20px;">BAIXAR GUIA AGORA</a>
-            <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 15px;">
+            <a href="#" class="btn" style="width: 100%; max-width: 400px; padding: 25px;">BAIXAR GUIA AGORA</a>
+            <p style="font-size: 1rem; color: var(--text-gray); margin-top: 20px;">
                 <i class="fas fa-gift"></i> Bônus: Planilha de Organização de College List (Google Sheets)
             </p>
         </div>
@@ -397,9 +435,9 @@
 
     <section class="problem-section">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 50px;" data-aos="fade-up">
-                <h2 style="margin-bottom: 10px; font-size: 2rem; color: #fff;">O Método na Prática</h2>
-                <p style="color: var(--text-gray);">Uma questão "difícil" de polinômios resolvida em 10 segundos.</p>
+            <div style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
+                <h2 style="margin-bottom: 10px; font-size: 2.5rem; color: #fff;">O Método na Prática</h2>
+                <p style="color: var(--text-gray); font-size: 1.2rem;">Uma questão "difícil" de polinômios resolvida em 10 segundos.</p>
             </div>
 
             <div class="problem-wrapper">
@@ -410,7 +448,7 @@
                     <div class="option-item correct">
                         <span class="opt-letter">D)</span> The remainder when <span class="math-var">p(x)</span> is divided by <span class="math-var">x - 3</span> is <span class="math-var">-2</span>.
                     </div>
-                    <p style="margin-top: 20px; color: var(--text-gray); font-size: 0.9rem;">
+                    <p style="margin-top: 25px; color: var(--text-gray); font-size: 1.1rem;">
                         A maioria tenta fatorar. Meus alunos usam o <strong>Remainder Theorem</strong> e resolvem sem conta.
                     </p>
                 </div>
@@ -438,57 +476,65 @@
     </section>
 
     <section class="pricing-section container">
-        <h2 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;" data-aos="fade-down">Planos de Mentoria</h2>
-        <p style="text-align: center; color: var(--text-gray); margin-bottom: 50px;" data-aos="fade-down" data-aos-delay="100">Parcelamento em até <span style="color: var(--primary); font-weight: bold;">12x sem juros</span> disponível.</p>
+        <h2 style="text-align: center; margin-bottom: 20px; font-size: 3rem;" data-aos="fade-down">Planos de Mentoria</h2>
+        <p style="text-align: center; color: var(--text-gray); margin-bottom: 60px; font-size: 1.2rem;" data-aos="fade-down" data-aos-delay="100">Do básico ao acompanhamento total.</p>
         
         <div class="pricing-grid">
             
             <div class="price-card" data-aos="fade-up" data-aos-delay="0">
-                <h3 class="price-title">Deep Dive</h3>
-                <div class="price-amount">69<small>,90</small></div>
-                <div class="price-period">Mensais (12x sem juros)</div>
-                <div class="price-installments">ou R$ 838,80 à vista</div>
+                <h3 class="price-title">Start</h3>
+                <span class="price-original">De R$ 197</span>
+                <div class="price-amount">97</div>
+                <div class="price-installments">10x R$ 9,70</div>
                 <ul class="price-features">
-                    <li><i class="fas fa-check"></i> <strong>5 Aulas</strong> Individuais (1h cada)</li>
-                    <li><i class="fas fa-check"></i> <strong>5 Simulados</strong> Oficiais</li>
-                    <li><i class="fas fa-check"></i> Foco nas suas Dificuldades</li>
-                    <li><i class="fas fa-check"></i> Cronograma Personalizado</li>
+                    <li><i class="fas fa-book"></i> <strong>Ebook:</strong> Guia Estudar Fora</li>
+                    <li><i class="fas fa-table"></i> 1 Planilha: Organização College List</li>
+                    <li><i class="fas fa-video"></i> <strong>Call 15 min:</strong> Diagnóstico/Perguntas</li>
                 </ul>
-                <a href="https://wa.me/5541999999999" class="btn btn-outline">Escolher Plano</a>
+                <a href="#" class="btn btn-outline">Começar Agora</a>
             </div>
 
             <div class="price-card featured" data-aos="fade-up" data-aos-delay="100">
-                <div class="badge">MAIS POPULAR</div>
-                <h3 class="price-title">Mentoria Completa</h3>
-                <div class="price-amount">99<small>,90</small></div>
-                <div class="price-period">Mensais (12x sem juros)</div>
-                <div class="price-installments">ou R$ 1.198,80 à vista</div>
+                <div class="badge">RECOMENDADO</div>
+                <h3 class="price-title">Comunidade & Docs</h3>
+                <span class="price-original">Bônus Incluso</span>
+                <div class="price-amount">197</div>
+                <div class="price-installments">Preço Único</div>
                 <ul class="price-features">
-                    <li><i class="fas fa-check"></i> <strong>10 Aulas</strong> Individuais (1h cada)</li>
-                    <li><i class="fas fa-check"></i> <strong>10 Simulados</strong> Oficiais</li>
-                    <li><i class="fas fa-check"></i> <strong>Ebook:</strong> Guia Estudar Fora</li>
-                    <li><i class="fas fa-check"></i> Estratégia de Application</li>
-                    <li><i class="fas fa-check"></i> Suporte WhatsApp Ilimitado</li>
+                    <li><i class="fas fa-check-double"></i> <strong>Ebook:</strong> Guia Completo</li>
+                    <li><i class="fas fa-layer-group"></i> <strong>Todas as 5 Planilhas</strong></li>
+                    <li><i class="fab fa-whatsapp"></i> <strong>Grupo WhatsApp:</strong> Suporte Moderadores</li>
                 </ul>
-                <a href="https://wa.me/5541999999999" class="btn">Garantir Vaga</a>
+                <a href="#" class="btn">Garantir Pack</a>
             </div>
 
-            <div class="price-card" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="price-title">Avulso</h3>
-                <p style="color: var(--text-gray); font-size: 0.9rem;">Para necessidades pontuais</p>
-                <ul class="price-features" style="margin-top: 20px;">
-                    <li style="display: flex; justify-content: space-between;">
-                        <span><i class="fas fa-video"></i> Aula Avulsa (1h)</span>
-                        <strong style="color: var(--primary);">R$ 180,00</strong>
-                    </li>
-                    <li style="text-align: center; color: var(--text-gray); font-size: 0.8rem; margin-top: 20px;">
-                        *O Ebook também é vendido separadamente acima.
-                    </li>
+            <div class="price-card" data-aos="fade-up" data-aos-delay="200" style="border-color: var(--usf-green);">
+                <h3 class="price-title">Mentoria Aceleração</h3>
+                <span class="price-original">De R$ 1150</span>
+                <div class="price-amount" style="color: var(--usf-green);">497</div>
+                <div class="price-installments">Oferta Limitada</div>
+                <ul class="price-features">
+                    <li><i class="fas fa-crown"></i> <strong>Tudo do Pack Comunidade</strong></li>
+                    <li><i class="fas fa-video"></i> <strong>5 Aulas Particulares</strong> (SAT Math)</li>
+                    <li><i class="fas fa-headset"></i> <strong>3 Calls Mentoria</strong> (1h cada)</li>
+                    <li><i class="fab fa-whatsapp"></i> Suporte Ilimitado (1 Ano)</li>
                 </ul>
-                <a href="https://wa.me/5541999999999" class="btn btn-outline">Agendar Avulso</a>
+                <a href="https://wa.me/5541999999999" class="btn" style="background-color: var(--usf-green);">Aplicar para Vaga</a>
             </div>
 
         </div>
+
+        <div class="small-card-wrapper" data-aos="fade-up" data-aos-delay="300">
+            <div class="small-card">
+                <div style="flex: 1;">
+                    <h4 style="margin: 0 0 5px 0; font-size: 1.3rem; color: #fff;">Quer apenas uma aula?</h4>
+                    <p style="margin: 0; color: var(--text-gray); font-size: 0.95rem;">Aula Avulsa de SAT Math (1h) para tirar dúvidas pontuais.</p>
+                </div>
+                <div class="small-card-price">R$ 180</div>
+                <a href="#" class="btn btn-outline" style="padding: 10px 25px; font-size: 1rem;">Agendar</a>
+            </div>
+        </div>
+
     </section>
 
     <footer data-aos="fade-in">
